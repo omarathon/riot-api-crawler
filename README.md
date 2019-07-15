@@ -122,6 +122,14 @@ One may use this crawler by adding one of the jars within the builds directory o
 
 It is recommended for one to install the first-half of the above dependencies and to use the jar that does not contain the dependencies in their project, if they do not intend to use the PostFirebaseOutputHandler.
 
+## Changelog
+
+  - 15/07/2019: First version uploaded.
+ 
+## Future Developments
+
+  - Multithreaded Crawler instances.
+
 ## Remark
 
 One is recommended only to use this code within prototype systems - *it may not be safe for production*.
