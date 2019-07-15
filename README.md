@@ -54,7 +54,7 @@ Utilises [Google Gson](https://github.com/google/gson) and [firebase4j](https://
 ## Dependencies
 This project was developed via Maven, and used the following dependencies as libraries:
  - **[riot-api-java](https://github.com/taycaldwell/riot-api-java)** - com.github.taycaldwell, riot-api-java
-``
+```
 <repositories>  
 	 <repository> 
 		 <id>jitpack.io</id>  
@@ -68,9 +68,9 @@ This project was developed via Maven, and used the following dependencies as lib
 		 <version>4.2.0</version>  
 	</dependency>
 </dependencies>
-``
+```
  - **[Google Gson](https://github.com/google/gson)** - com.google.code.gson, gson
-``
+```
 <dependencies>
 	<dependency>  
 		 <groupId>com.google.code.gson</groupId>  
@@ -78,11 +78,11 @@ This project was developed via Maven, and used the following dependencies as lib
 		 <version>2.8.5</version>  
 	</dependency>
 </dependencies>
-``
+```
 
 There are some additional dependencies required for the extras, specifically for the PostFirebaseOutputHandler:
  - **[Google Firebase](https://firebase.google.com/)** - com.google.firebase, firebase-admin
-``
+```
 <dependencies>  
 	 <dependency> 
 		 <groupId>com.google.firebase</groupId>  
@@ -90,9 +90,9 @@ There are some additional dependencies required for the extras, specifically for
 		 <version>6.8.1</version>  
 	 </dependency>
 </dependencies>
-``
+```
  - **[firebase4j](https://github.com/bane73/firebase4j)** - com.github.bane73, firebase4j
-``
+```
 <dependencies>  
 	<dependency>  
 		 <groupId>com.github.bane73</groupId>  
@@ -100,7 +100,7 @@ There are some additional dependencies required for the extras, specifically for
 		 <version>Tmaster-b6f90e9764-1</version>  
 	</dependency>
 </dependencies>
-``
+```
 
 ## Usage
 
