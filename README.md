@@ -82,7 +82,7 @@ This project was developed via Maven, and used the following dependencies as lib
 </dependencies>
 ```
  - **[Google Gson](https://github.com/google/gson)** - com.google.code.gson, gson
-```
+```xml
 <dependencies>
 	<dependency>  
 		 <groupId>com.google.code.gson</groupId>  
@@ -94,7 +94,7 @@ This project was developed via Maven, and used the following dependencies as lib
 
 There are some additional dependencies required for the extras, specifically for the PostFirebaseOutputHandler:
  - **[Google Firebase](https://firebase.google.com/)** - com.google.firebase, firebase-admin
-```
+```xml
 <dependencies>  
 	 <dependency> 
 		 <groupId>com.google.firebase</groupId>  
@@ -104,7 +104,7 @@ There are some additional dependencies required for the extras, specifically for
 </dependencies>
 ```
  - **[firebase4j](https://github.com/bane73/firebase4j)** - com.github.bane73, firebase4j
-```
+```xml
 <dependencies>  
 	<dependency>  
 		 <groupId>com.github.bane73</groupId>  
