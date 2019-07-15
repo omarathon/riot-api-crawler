@@ -9,10 +9,10 @@
     So in file: logDirectory/postfirebaseoutputhandler-logs/output-handler-log.log
 */
 
-package com.omarathon.riotapicrawler.presets.outputhandlers;
+package com.omarathon.riotapicrawler.extras.postfirebaseoutputhandler;
 
 import com.google.gson.Gson;
-import com.omarathon.riotapicrawler.presets.outputhandlers.lib.FirebaseConnection;
+import com.omarathon.riotapicrawler.extras.postfirebaseoutputhandler.lib.FirebaseConnection;
 import com.omarathon.riotapicrawler.src.lib.MatchFormatter;
 import com.omarathon.riotapicrawler.src.lib.OutputHandler;
 import net.rithms.riot.api.endpoints.match.dto.Match;

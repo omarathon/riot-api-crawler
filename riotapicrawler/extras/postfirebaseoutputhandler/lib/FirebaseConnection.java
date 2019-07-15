@@ -9,7 +9,7 @@
     Author: Omar Tanner, 2019 -- open source.
 */
 
-package com.omarathon.riotapicrawler.presets.outputhandlers.lib;
+package com.omarathon.riotapicrawler.extras.postfirebaseoutputhandler.lib;
 
 import net.thegreshams.firebase4j.error.FirebaseException;
 import net.thegreshams.firebase4j.service.Firebase;

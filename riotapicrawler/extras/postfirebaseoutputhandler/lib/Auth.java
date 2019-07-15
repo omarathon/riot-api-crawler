@@ -5,7 +5,7 @@
     Author: Omar Tanner, 2019 -- open source.
 */
 
-package com.omarathon.riotapicrawler.presets.outputhandlers.lib;
+package com.omarathon.riotapicrawler.extras.postfirebaseoutputhandler.lib;
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.auth.oauth2.GoogleCredentials;
