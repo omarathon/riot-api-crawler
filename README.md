@@ -51,6 +51,10 @@ Utilises [Google Gson](https://github.com/google/gson).
   - PostFirebaseOutputHandler.java - An extension output handler, located within the extras/postfirebaseoutputhandler directory of this repo, which HTTP POSTs the formatted output from a MatchFormatter to a [Google Firebase](https://firebase.google.com/).
 Utilises [Google Gson](https://github.com/google/gson) and [firebase4j](https://github.com/bane73/firebase4j).
 
+## Examples
+
+One may find an examplar use of the Crawler within Example.java.
+
 ## Dependencies
 This project was developed via Maven, and used the following dependencies as libraries:
  - **[riot-api-java](https://github.com/taycaldwell/riot-api-java)** - com.github.taycaldwell, riot-api-java
