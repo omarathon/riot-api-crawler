@@ -53,7 +53,14 @@ Utilises [Google Gson](https://github.com/google/gson) and [firebase4j](https://
 
 ## Examples
 
-One may find an examplar use of the Crawler within Example.java.
+One may find examplar uses of the Crawler within the examples directory:
+
+ - Example.java: an examplar use of the Crawler, which:
+   - Only crawls Matches that are at least 20 minutes long,
+   - Only crawls Summoners that are at least level 30,
+   - Only processes 5 recent Matches for each crawled Summoner,
+   - Formats each Match into a set of statistics for both teams,
+      and stores the results in JSON files within a given directory.
 
 ## Dependencies
 This project was developed via Maven, and used the following dependencies as libraries:
