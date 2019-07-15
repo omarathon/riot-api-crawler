@@ -66,7 +66,7 @@ One may find examplar uses of the Crawler within the examples directory of this 
 ## Dependencies
 This project was developed via Maven, and used the following dependencies as libraries:
  - **[riot-api-java](https://github.com/taycaldwell/riot-api-java)** - com.github.taycaldwell, riot-api-java
-```
+```xml
 <repositories>  
 	 <repository> 
 		 <id>jitpack.io</id>  
