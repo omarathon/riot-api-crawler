@@ -53,9 +53,10 @@ Utilises [Google Gson](https://github.com/google/gson) and [firebase4j](https://
 
 ## Examples
 
-One may find examplar uses of the Crawler within the examples directory:
+One may find examplar uses of the Crawler within the examples directory of this repo:
 
  - Example.java: an examplar use of the Crawler, which:
+ 
    - Only crawls Matches that are at least 20 minutes long,
    - Only crawls Summoners that are at least level 30,
    - Only processes 5 recent Matches for each crawled Summoner,
