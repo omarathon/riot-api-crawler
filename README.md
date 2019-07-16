@@ -1,11 +1,11 @@
 
 # # riot-api-crawler
 
-A customisable League of Legends match crawler, utilising [riot-api-java](https://github.com/taycaldwell/riot-api-java) as a Java wrapper for the [Riot API](https://developer.riotgames.com/).
+A *customisable League of Legends match crawler*, utilising [riot-api-java](https://github.com/taycaldwell/riot-api-java) as a Java wrapper for the [Riot API](https://developer.riotgames.com/).
 
 Features built-in request throttling and interactive logging.
 
-Current version: 1.0.
+Current version: **1.0**.
 
 ## Functionality
 The crawler operates as follows:
@@ -15,22 +15,22 @@ The crawler operates as follows:
  4. Proceed to search for the next Summoner to crawl. Iterate through each Match, passing it through a filter in the CrawlerConfig to determine if it's crawlable, until a  crawlable Match is found.
  5. Obtain all of the Summoners in the Match.
  6. Randomly pick a new Summoner from the Match, passing each through a filter in the CrawlerConfig to determine if they're crawlable, until a crawlable Summoner is found.
- 7. If (6) ends with no crawlable Summoners found, return to (4), moving to the next Match.
- 8. If (6) ends with no more Matches left at (4), the crawler has reached a dead end, and its operation shall stop. This event is extremely unlikely unless the filters in the CrawlerConfig are extremely restrictive.
- 9. If a crawlable Summoner has been found, set them as the new Summoner being crawled, and return to (2).
+ 7. If **(6)** ends with no crawlable Summoners found, return to **(4)**, moving to the next Match.
+ 8. If **(6)** ends with no more Matches left at **(4)**, the crawler has reached a *dead end*, and its operation shall stop. This event is extremely unlikely unless the filters in the CrawlerConfig are extremely restrictive.
+ 9. If a crawlable Summoner has been found, set them as the new Summoner being crawled, and return to **(2)**.
 
 ## Notable Behaviour
 
-In its current implementation, the crawler has the following  behaviour for error-handling:
+In its current implementation, the crawler has the following behaviour for error-handling:
 
-  - After a call to the Riot API, if a RateLimitException is obtained, then there is a built-in throttling system which shall sleep the thread until further calls to the API can be made again. When possible, the request shall be repeated.
+  - After a call to the Riot API, if a **RateLimitException** is obtained, then there is a built-in **throttling system** which shall **sleep the thread** until further calls to the API can be made again. When possible, the request shall be **repeated**.
 - When obtaining the MatchList for the Summoner being crawled, all errors except a RateLimitException cause the crawler to stop crawling.
 - When obtaining the Match object for each MatchReference in the list of MatchReferences, any RiotApiException shall mean such Match is not sent to the OutputHandler, nor is it stored to be potentially crawled.
 - When obtaining the Summoner object for each Player in a Match, any RiotApiException shall mean that such Summoner will not be crawled, and is skipped.
 
  ## Main Classes
 These files may be located within riotapicrawler/src, and include:
- - Crawler.java: The central object to be initialised, initiates crawling on a new thread after calling its run method with an input Summoner. One must construct a Crawler with:
+ - [Crawler.java](riotapicrawler/src/Crawler.java): The central object to be initialised, initiates crawling on a new thread after calling its run method with an input Summoner. One must construct a Crawler with:
     - your Riot API key,
     - an OutputHandler, which does something desired with the obtained Match objects,
     - a CrawlerConfig, which filters the crawled upon Matches and Summoners, and provides additional parameters to configure the operation of the crawler,
