@@ -5,7 +5,7 @@ A *customisable League of Legends match crawler*, utilising [riot-api-java](http
 
 Features built-in *request throttling* and *interactive logging*.
 
-Current version: **1.0**.
+Current version: **1.1**.
 
 ## Functionality
 The crawler operates as follows:
