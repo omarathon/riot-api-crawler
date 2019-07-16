@@ -52,7 +52,7 @@ Included in the presets folder of this repo, one may find presets for all of the
 The **provided presets** are mostly basic and show a *simple* and *more complex* example, however there is included **two OutputHandlers**:
   - [**FileOutputHandler.java**](riotapicrawler/presets/outputhandlers/FileOutputHandler.java) - An OutputHandler that writes a JSON file with name of the game ID for each Match object at a specified directory, with contents the output of the Match from its MatchFormatter. 
 Utilises [Google Gson](https://github.com/google/gson).
-  - [***PostFirebaseOutputHandler.java***](extras/postfirebaseoutputhandler/PostFirebaseOutputHandler.java) - An **extension output handler**, located within the *extras/postfirebaseoutputhandler* directory of this repo, which HTTP POSTs the formatted output from a MatchFormatter to a [Google Firebase](https://firebase.google.com/).
+  - [***PostFirebaseOutputHandler.java***](riotapicrawler/extras/postfirebaseoutputhandler/PostFirebaseOutputHandler.java) - An **extension output handler**, located within the *extras/postfirebaseoutputhandler* directory of this repo, which HTTP POSTs the formatted output from a MatchFormatter to a [Google Firebase](https://firebase.google.com/).
 Utilises [Google Gson](https://github.com/google/gson) and [firebase4j](https://github.com/bane73/firebase4j).
 
 ## Examples
