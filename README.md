@@ -45,31 +45,34 @@ These files may be located within *riotapicrawler/src/lib*, and include:
   - [**MatchFormatter.java**](riotapicrawler/src/lib/MatchFormatter.java): An interface which transforms an input Match into an output Object.
 
 The above interfaces, although seemingly abstract, provide a high level of customisability. They are combined in the following class:
-  - [**CrawlerConfig.java**](riotapicrawler/src/lib/CrawlerConfig): A *configuration class for the crawler*.  Stores a **MatchFilter** and **SummonerFilter** used by the crawler to  *predicate the crawled Matches and Summoners*,  and an **integer maxMatches property** which determines the *number of recent matches to obtain and send to the output handler for each crawled player*.
+  - [**CrawlerConfig.java**](riotapicrawler/src/lib/CrawlerConfig.java): A *configuration class for the crawler*.  Stores a **MatchFilter** and **SummonerFilter** used by the crawler to  *predicate the crawled Matches and Summoners*,  and an **integer maxMatches property** which determines the *number of recent matches to obtain and send to the output handler for each crawled player*.
 
 Included in the presets folder of this repo, one may find presets for all of these interfaces and classes. They are also contained within the builds.
 
 The **provided presets** are mostly basic and show a *simple* and *more complex* example, however there is included **two OutputHandlers**:
   - [**FileOutputHandler.java**](riotapicrawler/presets/outputhandlers/FileOutputHandler.java) - An OutputHandler that writes a JSON file with name of the game ID for each Match object at a specified directory, with contents the output of the Match from its MatchFormatter. 
+  
 Utilises [Google Gson](https://github.com/google/gson).
+
   - [***PostFirebaseOutputHandler.java***](riotapicrawler/extras/postfirebaseoutputhandler/PostFirebaseOutputHandler.java) - An **extension output handler**, located within the *extras/postfirebaseoutputhandler* directory of this repo, which HTTP POSTs the formatted output from a MatchFormatter to a [Google Firebase](https://firebase.google.com/).
+  
 Utilises [Google Gson](https://github.com/google/gson) and [firebase4j](https://github.com/bane73/firebase4j).
 
 ## Examples
 
-One may find examplar uses of the Crawler within the examples directory of this repo:
+One may find examplar uses of the Crawler within the *examples* directory of this repo:
 
- - Example.java: an examplar use of the Crawler, which:
+ - [**Example.java**](examples/Example.java): an examplar use of the Crawler, which:
  
-   - Only crawls Matches that are at least 20 minutes long,
-   - Only crawls Summoners that are at least level 30,
-   - Only processes 5 recent Matches for each crawled Summoner,
-   - Formats each Match into a set of statistics for both teams,
-      and stores the results in JSON files within a given directory.
+   - Only crawls Matches that are *at least 20 minutes long*,
+   - Only crawls Summoners that are *at least level 30*,
+   - Only processes *5 recent Matches* for each crawled Summoner,
+   - Formats each Match into a *set of statistics for both teams*,
+      and stores the results in *JSON files within a given directory*.
 
 ## Dependencies
 This project was developed via Maven, and used the following dependencies as libraries:
- - **[riot-api-java](https://github.com/taycaldwell/riot-api-java)** - com.github.taycaldwell, riot-api-java
+ - [**riot-api-java**](https://github.com/taycaldwell/riot-api-java) - com.github.taycaldwell, riot-api-java
 ```xml
 <repositories>  
 	 <repository> 
@@ -85,7 +88,7 @@ This project was developed via Maven, and used the following dependencies as lib
 	</dependency>
 </dependencies>
 ```
- - **[Google Gson](https://github.com/google/gson)** - com.google.code.gson, gson
+ - [**Google Gson**](https://github.com/google/gson) - com.google.code.gson, gson
 ```xml
 <dependencies>
 	<dependency>  
@@ -97,7 +100,7 @@ This project was developed via Maven, and used the following dependencies as lib
 ```
 
 There are some additional dependencies required for the extras, specifically for the PostFirebaseOutputHandler:
- - **[Google Firebase](https://firebase.google.com/)** - com.google.firebase, firebase-admin
+ - [**Google Firebase**](https://firebase.google.com/) - com.google.firebase, firebase-admin
 ```xml
 <dependencies>  
 	 <dependency> 
@@ -107,7 +110,7 @@ There are some additional dependencies required for the extras, specifically for
 	 </dependency>
 </dependencies>
 ```
- - **[firebase4j](https://github.com/bane73/firebase4j)** - com.github.bane73, firebase4j
+ - [**firebase4j**](https://github.com/bane73/firebase4j) - com.github.bane73, firebase4j
 ```xml
 <dependencies>  
 	<dependency>  
@@ -120,7 +123,7 @@ There are some additional dependencies required for the extras, specifically for
 
 ## Usage
 
-One may use this crawler by adding one of the jars within the builds directory of this repo to their project. It is their choice whether to choose the jar containing or not containing the dependencies, however if the latter option is chosen they must install the appropriate dependencies as above.
+One may *use this crawler* by **adding one of the jars** within the *builds* directory of this repo to their project. It is their choice whether to choose the jar *containing or not containing the dependencies*, however if the latter option is chosen they must **install the appropriate dependencies as above**.
 
 It is recommended for one to install the first-half of the above dependencies and to use the jar that does not contain the dependencies in their project, if they do not intend to use the PostFirebaseOutputHandler.
 
@@ -132,7 +135,7 @@ Here I list some interesting future developments to the project:
 
 ## Changelog
 
-  - 15/07/2019: First version uploaded.
+  - **15/07/2019**: First version uploaded.
  
 
 ## Remark
