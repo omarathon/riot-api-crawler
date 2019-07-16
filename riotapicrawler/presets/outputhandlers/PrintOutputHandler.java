@@ -1,6 +1,9 @@
 /* *
     A simple OutputHandler which prints an input Match to System.out.
     Uses a MatchFormatter to format the input Match into its printable output.
+
+    Author: Omar Tanner (omarathon)
+    Copyright © 2019 omarathon
  */
 
 package com.omarathon.riotapicrawler.presets.outputhandlers;

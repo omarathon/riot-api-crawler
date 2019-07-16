@@ -1,6 +1,9 @@
 /*
     A CrawlerConfig that allows all matches and all summoners to be crawled,
     and takes as input the number of recent matches per player to be obtained and stored by the crawler.
+
+    Author: Omar Tanner (omarathon)
+    Copyright © 2019 omarathon
 */
 
 package com.omarathon.riotapicrawler.presets.crawlerconfigs;

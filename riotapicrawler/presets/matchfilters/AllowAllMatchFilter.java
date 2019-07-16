@@ -1,5 +1,8 @@
 /*
     A MatchFilter that simply allows all matches.
+
+    Author: Omar Tanner (omarathon)
+    Copyright © 2019 omarathon
 */
 
 package com.omarathon.riotapicrawler.presets.matchfilters;

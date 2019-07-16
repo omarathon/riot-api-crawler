@@ -7,6 +7,9 @@
 
     Logs the operation in a given log directory, in a folder named "postfirebaseoutputhandler-logs", in a file named "output-handler-log.log".
     So in file: logDirectory/postfirebaseoutputhandler-logs/output-handler-log.log
+
+    Author: Omar Tanner (omarathon)
+    Copyright © 2019 omarathon
 */
 
 package com.omarathon.riotapicrawler.extras.postfirebaseoutputhandler;

@@ -20,7 +20,8 @@
     - if found, go to step 1 with this new player.
     - otherwise, we have iterates over all matches and found no crawlable players in each, therefore we have reached a dead end, STOP CRAWLING.
 
-    Author: Omar Tanner, 2019 -- open source.
+    Author: Omar Tanner.
+    Copyright © 2019 omarathon
 */
 
 package com.omarathon.riotapicrawler.src;
