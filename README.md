@@ -31,8 +31,8 @@ In its current implementation, the crawler has the following behaviour for error
 ## Quick Start
 
 Below is an example to begin crawling with a very basic configuration, where it:
- - Simply prints the output Matches to System.out (using the [PrintOutputHandler](riotapicrawler/presets/outputhandlers/PrintOutputHandler.java)) with no formatting (using a [DoNothingMatchFormatter](riotapicrawler/presets/matchformatters/DoNothingMatchFormatter)),
- - Accepts all Matches and Summoners as crawlable, and obtains 5 matches per Summoner (by initialising a [BasicCrawlerConfig](riotapicrawler/presets/crawlerconfigs/BasicCrawlerConfig) with 5 as the input maxMatches parameter)
+ - Simply prints the output Matches to System.out (using the [PrintOutputHandler](riotapicrawler/presets/outputhandlers/PrintOutputHandler.java)) with no formatting (using a [DoNothingMatchFormatter](riotapicrawler/presets/matchformatters/DoNothingMatchFormatter.java)),
+ - Accepts all Matches and Summoners as crawlable, and obtains 5 matches per Summoner (by initialising a [BasicCrawlerConfig](riotapicrawler/presets/crawlerconfigs/BasicCrawlerConfig.java) with 5 as the input maxMatches parameter)
  
  ```java
  // Construct the PrintOutputHandler with a DoNothingMatchFilter
