@@ -35,19 +35,24 @@ Below is an example to begin crawling with a very basic configuration, where it:
  - Accepts all Matches and Summoners as crawlable, and obtains 5 matches per Summoner (by initialising a BasicCrawlerConfig with 5 as the input maxMatches parameter)
  
  ```java
- // Construct the PrintOutputHandler with a DoNothingMatchFilter (we will simply print the raw Match data)
+ // Construct the PrintOutputHandler with a DoNothingMatchFilter
+ // (we will simply print the raw Match data)
  OutputHandler outputHandler  = new PrintOutputHandler(new DoNothingMatchFilter());
  
- // Construct a BasicCrawlerConfig, with 5 as the input maxMatches parameter (number of recent Matches to obtain from each match history)
+ // Construct a BasicCrawlerConfig, with 5 as the input maxMatches parameter
+ // (number of recent Matches to obtain from each match history)
  CrawlerConfig crawlerConfig = new BasicCrawlerConfig(5);
  
- // Construct a Path where we would like the logs from the Crawler to be written to. In this example, I choose "C:/data/crawler"
+ // Construct a Path where we would like the logs from the Crawler to be written to.
+ // In this example, I choose "C:/data/crawler"
  Path logsDirectory = Paths.get("C:/data/crawler");
  
- // Construct a Crawler, with your input Riot API key and the above OutputHandler, CrawlerConfig and log Path
+ // Construct a Crawler, with your input Riot API key and the above
+ // OutputHandler, CrawlerConfig and log Path
  Crawler crawler = new Crawler("YOUR API KEY GOES HERE", outputHandler, crawlerConfig, logsDirectory);
  
- // Run the Crawler on a new thread, starting from an input Summoner of choice (with their Platform). Chosen here is https://euw.op.gg/summoner/userName=pff.
+ // Run the Crawler on a new thread, starting from an input Summoner of choice
+ // (with their Platform). Chosen here is https://euw.op.gg/summoner/userName=pff.
  crawler.run("pff", Platform.EUW);
  ```
  
