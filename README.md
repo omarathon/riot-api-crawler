@@ -29,30 +29,30 @@ In its current implementation, the crawler has the following behaviour for error
 - When obtaining the Summoner object for each Player in a Match, any RiotApiException shall mean that such Summoner will not be crawled, and is skipped.
 
  ## Main Classes
-These files may be located within riotapicrawler/src, and include:
- - [Crawler.java](riotapicrawler/src/Crawler.java): The central object to be initialised, initiates crawling on a new thread after calling its run method with an input Summoner. One must construct a Crawler with:
+These files may be located within *riotapicrawler/src*, and include:
+ - **[Crawler.java]**(riotapicrawler/src/Crawler.java): The central object to be initialised, initiates crawling on a new thread after calling its run method with an input Summoner. One must construct a Crawler with:
     - your Riot API key,
     - an OutputHandler, which does something desired with the obtained Match objects,
     - a CrawlerConfig, which filters the crawled upon Matches and Summoners, and provides additional parameters to configure the operation of the crawler,
-    -  a Path, where the logs from the crawler shall be generated.
+    -  a [Path](https://docs.oracle.com/javase/7/docs/api/java/nio/file/Path.html), where the logs from the crawler shall be generated.
 
 
 
 ## Interfaces and Customisability Classes
-These files may be located within riotapicrawler/src/lib, and include:
-  - OutputHandler.java: An interface which takes a Match object and does something with it, for example formatting and saving it to a JSON file, or uploading it to a database.
-  -  MatchFilter.java and SummonerFilter.java: Interfaces which predicate Match and Summoner objects, with their filter method returning true if the Object is "accepted" by the filter, and false otherwise.
-  - MatchFormatter.java: An interface which transforms an input Match into an output Object.
+These files may be located within *riotapicrawler/src/lib*, and include:
+  - **[OutputHandler.java]**(riotapicrawler/src/lib/OutputHandler.java): An interface which takes a Match object and does something with it, for example formatting and saving it to a JSON file, or uploading it to a database.
+  -  **[MatchFilter.java]**(riotapicrawler/src/lib/MatchFilter.java) and **[SummonerFilter.java]**(riotapicrawler/src/lib/SummonerFilter.java): Interfaces which predicate Match and Summoner objects, with their filter method returning true if the Object is "accepted" by the filter, and false otherwise.
+  - **[MatchFormatter.java]**(riotapicrawler/src/lib/MatchFormatter.java): An interface which transforms an input Match into an output Object.
 
 The above interfaces, although seemingly abstract, provide a high level of customisability. They are combined in the following class:
-  - CrawlerConfig.java: A configuration class for the crawler.  Stores a MatchFilter and SummonerFilter used by the crawler to  predicate the crawled Matches and Summoners,  and an integer maxMatches property which determines the number of recent matches to obtain and  send to the output handler for each crawled player.
+  - **[CrawlerConfig.java]**(riotapicrawler/src/lib/CrawlerConfig): A *configuration class for the crawler*.  Stores a **MatchFilter** and **SummonerFilter** used by the crawler to  *predicate the crawled Matches and Summoners*,  and an **integer maxMatches property** which determines the *number of recent matches to obtain and send to the output handler for each crawled player*.
 
-Included in the presets folder of this repo, one may find presets for all of these interfaces and classes. They are also contained within the builds. 
+Included in the presets folder of this repo, one may find presets for all of these interfaces and classes. They are also contained within the builds.
 
-The provided presets are mostly basic and show a simple and more complex example, however there is included two OutputHandlers:
-  - FileOutputHandler.java - An OutputHandler that writes a JSON file with name of the game ID for each Match object at a specified directory, with contents the output of the Match from its MatchFormatter. 
+The **provided presets** are mostly basic and show a *simple* and *more complex* example, however there is included **two OutputHandlers**:
+  - **[FileOutputHandler.java]**(presets/outputhandlers/FileOutputHandler.java) - An OutputHandler that writes a JSON file with name of the game ID for each Match object at a specified directory, with contents the output of the Match from its MatchFormatter. 
 Utilises [Google Gson](https://github.com/google/gson).
-  - PostFirebaseOutputHandler.java - An extension output handler, located within the extras/postfirebaseoutputhandler directory of this repo, which HTTP POSTs the formatted output from a MatchFormatter to a [Google Firebase](https://firebase.google.com/).
+  - ***[PostFirebaseOutputHandler.java]***(extras/postfirebaseoutputhandler/PostFirebaseOutputHandler.java) - An **extension output handler**, located within the *extras/postfirebaseoutputhandler* directory of this repo, which HTTP POSTs the formatted output from a MatchFormatter to a [Google Firebase](https://firebase.google.com/).
 Utilises [Google Gson](https://github.com/google/gson) and [firebase4j](https://github.com/bane73/firebase4j).
 
 ## Examples
