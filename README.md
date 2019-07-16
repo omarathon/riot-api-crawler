@@ -157,6 +157,13 @@ One may *use this crawler* by **adding [one of the jars](builds)** within the *b
 
 It is recommended for one to install the first-half of the above dependencies and to use the jar that does not contain the dependencies in their project, if they do not intend to use the PostFirebaseOutputHandler.
 
+**One may either clone this repository to obtain the JAR files, or download them from the Dropbox links below**:
+
+ - [with dependencies](https://www.dropbox.com/s/k19ze67qw3w7ghx/riotapicrawler-1.1-dep.jar?dl=0)
+ - [without dependencies](https://www.dropbox.com/s/s2fsne4dm50dy6h/riotapicrawler-1.1.jar?dl=0)
+ 
+(Current version: **1.1**)
+
 ## Known Issues
 
  - If a Summoner's MatchList is not obtainable, i.e a 404 error, the crawler stops haphazardly (perhaps they were banned). Currently one may resolve this by implementing a SummonerFilter which tests whether their MatchList data is obtainable / tests whether they are banned.
