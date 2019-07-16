@@ -30,7 +30,7 @@ In its current implementation, the crawler has the following behaviour for error
 
  ## Main Classes
 These files may be located within *riotapicrawler/src*, and include:
- - **[Crawler.java]**(riotapicrawler/src/Crawler.java): The central object to be initialised, initiates crawling on a new thread after calling its run method with an input Summoner. One must construct a Crawler with:
+ - [**Crawler.java**](riotapicrawler/src/Crawler.java): The central object to be initialised, initiates crawling on a new thread after calling its run method with an input Summoner. One must construct a Crawler with:
     - your Riot API key,
     - an OutputHandler, which does something desired with the obtained Match objects,
     - a CrawlerConfig, which filters the crawled upon Matches and Summoners, and provides additional parameters to configure the operation of the crawler,
