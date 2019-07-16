@@ -28,6 +28,22 @@ In its current implementation, the crawler has the following behaviour for error
 - When obtaining the Match object for each MatchReference in the list of MatchReferences, any RiotApiException shall mean such Match is not sent to the OutputHandler, nor is it stored to be potentially crawled.
 - When obtaining the Summoner object for each Player in a Match, any RiotApiException shall mean that such Summoner will not be crawled, and is skipped.
 
+## Quick Start
+
+Below is an example to begin crawling with a very basic configuration, where it:
+ - Simply prints the output Matches to System.out (using the PrintOutputHandler),
+ - Accepts all Matches and Summoners as crawlable, and obtains 5 matches per Summoner (by initialising a BasicCrawlerConfig with 5 as the input maxMatches parameter)
+ 
+ ```java
+ 
+ 
+ 
+ 
+ 
+ ```
+ 
+ 
+
  ## Main Classes
 These files may be located within *riotapicrawler/src*, and include:
  - [**Crawler.java**](riotapicrawler/src/Crawler.java) - The central object to be initialised, initiates crawling on a new thread after calling its run method with an input Summoner. One must construct a Crawler with:
