@@ -41,7 +41,7 @@ These files may be located within *riotapicrawler/src*, and include:
 ## Interfaces and Customisability Classes
 These files may be located within *riotapicrawler/src/lib*, and include:
   - [**OutputHandler.java**](riotapicrawler/src/lib/OutputHandler.java) - An interface which takes a Match object and does something with it, for example formatting and saving it to a JSON file, or uploading it to a database.
-  -  [**MatchFilter.java**](riotapicrawler/src/lib/MatchFilter.java) and **[SummonerFilter.java]**(riotapicrawler/src/lib/SummonerFilter.java) - Interfaces which predicate Match and Summoner objects, with their filter method returning true if the Object is "accepted" by the filter, and false otherwise.
+  -  [**MatchFilter.java**](riotapicrawler/src/lib/MatchFilter.java) and [**SummonerFilter.java**](riotapicrawler/src/lib/SummonerFilter.java) - Interfaces which predicate Match and Summoner objects, with their filter method returning true if the Object is "accepted" by the filter, and false otherwise.
   - [**MatchFormatter.java**](riotapicrawler/src/lib/MatchFormatter.java) - An interface which transforms an input Match into an output Object.
 
 The above interfaces, although seemingly abstract, provide a high level of customisability. They are combined in the following class:
@@ -123,7 +123,7 @@ There are some additional dependencies required for the extras, specifically for
 
 ## Usage
 
-One may *use this crawler* by **adding one of the jars** within the *builds* directory of this repo to their project. It is their choice whether to choose the jar *containing or not containing the dependencies*, however if the latter option is chosen they must **install the appropriate dependencies as above**.
+One may *use this crawler* by **adding [one of the jars](builds)** within the *builds* directory of this repo to their project. It is their choice whether to choose the jar *containing or not containing the dependencies*, however if the latter option is chosen they must **install the appropriate dependencies as above**.
 
 It is recommended for one to install the first-half of the above dependencies and to use the jar that does not contain the dependencies in their project, if they do not intend to use the PostFirebaseOutputHandler.
 
