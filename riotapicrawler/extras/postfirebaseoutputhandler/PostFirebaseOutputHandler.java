@@ -1,5 +1,5 @@
 /*
-    An OutputHandler which shall POST the formatted output (from the MatchHandler) to a Google Firebase.
+    An OutputHandler which shall POST the formatted output (from a MatchFormatter) to a Google Firebase.
     Utilises Google Gson and firebase4j.
     (Refs: https://github.com/google/gson, https://github.com/bane73/firebase4j)
 
