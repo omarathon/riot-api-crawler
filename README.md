@@ -155,6 +155,7 @@ Here I list some interesting future developments to the project:
 
 ## Changelog
 
+  - **16/07/2019**: Added a PrintOutputHandler.
   - **15/07/2019**: First version uploaded.
  
 
