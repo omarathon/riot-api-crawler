@@ -5,7 +5,7 @@ A *customisable League of Legends match crawler*, utilising [riot-api-java](http
 
 Features built-in *request throttling* and *interactive logging*.
 
-Current version: **1.1**.
+Current version: **1.2**.
 
 ## Functionality
 The crawler operates as follows:
@@ -162,7 +162,7 @@ It is recommended for one to install the first-half of the above dependencies an
  - [with dependencies](https://www.dropbox.com/s/k19ze67qw3w7ghx/riotapicrawler-1.1-dep.jar?dl=0)
  - [without dependencies](https://www.dropbox.com/s/s2fsne4dm50dy6h/riotapicrawler-1.1.jar?dl=0)
  
-(Current version: **1.1**)
+(Current version: **1.2**)
 
 ## Known Issues
 
