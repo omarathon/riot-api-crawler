@@ -6,8 +6,7 @@
 
     **WARNING**: Authentication via OAuth 2.0 currently malfunctional until fixed issue within firebase4j!!
 
-    Author: Omar Tanner (omarathon)
-    Copyright © 2019 omarathon
+    Author: Omar Tanner, 2019 -- open source.
 */
 
 package com.omarathon.riotapicrawler.extras.postfirebaseoutputhandler.lib;

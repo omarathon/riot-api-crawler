@@ -1,18 +1,16 @@
 /*
     A SummonerFilter that rejects all summoners with level less than 30.
-
-    Author: Omar Tanner (omarathon)
-    Copyright © 2019 omarathon
 */
 
 package com.omarathon.riotapicrawler.presets.summonerfilters;
 
 import com.omarathon.riotapicrawler.src.lib.SummonerFilter;
+import net.rithms.riot.api.RiotApi;
 import net.rithms.riot.api.endpoints.summoner.dto.Summoner;
 import net.rithms.riot.constant.Platform;
 
 public class LevelSummonerFilter implements SummonerFilter  {
-    public boolean filter(Summoner s, Platform p) {
+    public boolean filter(Summoner s, Platform p, RiotApi api) {
         // If their summoner level if at least 30 than allow them, i.e return true, otherwise reject, i.e return false.
         return (s.getSummonerLevel() >= 30);
     }

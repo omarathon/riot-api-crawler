@@ -1,8 +1,5 @@
 /*
     A MatchFormatter that simply passes through the input match without any modification.
-
-    Author: Omar Tanner (omarathon)
-    Copyright © 2019 omarathon
 */
 
 package com.omarathon.riotapicrawler.presets.matchformatters;

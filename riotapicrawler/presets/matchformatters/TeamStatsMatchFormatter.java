@@ -1,9 +1,6 @@
 /*
     A MatchFormatter that formats a Match into its list of TeamStats objects.
     Such list contains two entries, of which are TeamStats object that store statistics for each team.
-
-    Author: Omar Tanner (omarathon)
-    Copyright © 2019 omarathon
 */
 
 package com.omarathon.riotapicrawler.presets.matchformatters;

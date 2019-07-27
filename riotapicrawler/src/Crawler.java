@@ -20,8 +20,7 @@
     - if found, go to step 1 with this new player.
     - otherwise, we have iterates over all matches and found no crawlable players in each, therefore we have reached a dead end, STOP CRAWLING.
 
-    Author: Omar Tanner.
-    Copyright © 2019 omarathon
+    Author: Omar Tanner, 2019 -- open source.
 */
 
 package com.omarathon.riotapicrawler.src;
@@ -116,7 +115,7 @@ public class Crawler {
             // Obtain input base summoner
             Summoner summoner = (Summoner) runApiMethodWithThrottle(new GetSummonerByName(apiConfig, platform, summonerName));
             // Obtain summoner filter from crawler config to determine if input base summoner is crawlable
-            if (crawlerConfig.getSummonerFilter().filter(summoner, platform)) { // Crawlable
+            if (crawlerConfig.getSummonerFilter().filter(summoner, platform, api)) { // Crawlable
                 // Open a new thread and begin a crawl from the input player on such thread.
                 Thread crawlThread = new Thread(() -> {
                     crawl(summoner, platform);
@@ -252,7 +251,7 @@ public class Crawler {
         // Now iterate over each Match object in the ArrayList of Matches
         for (Match match : matches) {
             // Check if the Match is crawlable via the crawler config
-            if (crawlerConfig.getMatchFilter().filter(match)) { // Is crawlable
+            if (crawlerConfig.getMatchFilter().filter(match, api)) { // Is crawlable
                 log.info(logCrawlString + " Crawlable match found, picking random summoners from participants to find crawlable summoner!");
                 // Obtain the List of ParticipantIdentities for each player in the Match
                 List<ParticipantIdentity> participants = match.getParticipantIdentities();
@@ -276,7 +275,7 @@ public class Crawler {
                         continue;
                     }
                     // Now check that the summoner is crawlable via the crawler config, and that they're not already visited. If both are true, we may move the crawler to this new summoner.
-                    if (crawlerConfig.getSummonerFilter().filter(summonerNew, platformNew) && !visitedSummoners.contains(summonerNew.getId())) {
+                    if (crawlerConfig.getSummonerFilter().filter(summonerNew, platformNew, api) && !visitedSummoners.contains(summonerNew.getId())) {
                         log.info(logCrawlString + " Crawlable player found! Breaking out of current crawl to initiate crawl on them.");
                         // Shall crawl summonerNew, so create Pair and return
                         return new Pair<Summoner, Platform>(summonerNew, platformNew);

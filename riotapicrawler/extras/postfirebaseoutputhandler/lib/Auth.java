@@ -2,8 +2,7 @@
     General authentication class for Google Firebase.
     Reference: https://firebase.google.com/docs/admin/setup
 
-    Author: Omar Tanner (omarathon)
-    Copyright © 2019 omarathon
+    Author: Omar Tanner, 2019 -- open source.
 */
 
 package com.omarathon.riotapicrawler.extras.postfirebaseoutputhandler.lib;

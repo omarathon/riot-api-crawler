@@ -9,9 +9,6 @@
     the directory to write the Matches to, where in the constructor such property is set.
     Then, a call to handle will use such property variable to write the Match to the given
     directory.
-
-    Author: Omar Tanner (omarathon)
-    Copyright © 2019 omarathon
  */
 
 package com.omarathon.riotapicrawler.src.lib;
