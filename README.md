@@ -159,8 +159,8 @@ It is recommended for one to install the first-half of the above dependencies an
 
 **One may either clone this repository to obtain the JAR files, or download them from the Dropbox links below**:
 
- - [with dependencies](https://www.dropbox.com/s/k19ze67qw3w7ghx/riotapicrawler-1.1-dep.jar?dl=0)
- - [without dependencies](https://www.dropbox.com/s/s2fsne4dm50dy6h/riotapicrawler-1.1.jar?dl=0)
+ - [with dependencies](https://www.dropbox.com/s/s4ll1tlsen1bysh/riotapicrawler-1.2-dep.jar?dl=0)
+ - [without dependencies](https://www.dropbox.com/s/vsew4i75c1zui5y/riotapicrawler-1.2.jar?dl=0)
  
 (Current version: **1.2**)
 
