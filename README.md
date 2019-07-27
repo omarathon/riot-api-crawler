@@ -1,7 +1,7 @@
 
 # # riot-api-crawler
 
-A *customisable League of Legends match crawler*, utilising [riot-api-java](https://github.com/taycaldwell/riot-api-java) as a Java wrapper for the [Riot API](https://developer.riotgames.com/).
+A highly customisable League of Legends match crawler, utilising [riot-api-java](https://github.com/taycaldwell/riot-api-java) as a Java wrapper for the [Riot API](https://developer.riotgames.com/).
 
 Features built-in *request throttling* and *interactive logging*.
 
