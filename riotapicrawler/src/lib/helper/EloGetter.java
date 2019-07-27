@@ -1,7 +1,10 @@
 /*
-*  A helper class which obtains the <Rank, Tier> pair
-*  for a Summoner on a given platform in a given queue type.
-* */
+   A helper class which obtains the <Rank, Tier> pair
+   for a Summoner on a given platform in a given queue type.
+
+   Author: Omar Tanner (omarathon)
+   Copyright © 2019 omarathon
+*/
 
 package com.omarathon.riotapicrawler.src.lib.helper;
 

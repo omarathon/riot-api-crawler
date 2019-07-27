@@ -3,6 +3,9 @@
 
     If the Match is "accepted" by the filter, the filter method returns true,
     otherwise it returns false.
+
+    Author: Omar Tanner (omarathon)
+    Copyright © 2019 omarathon
  */
 
 package com.omarathon.riotapicrawler.src.lib;

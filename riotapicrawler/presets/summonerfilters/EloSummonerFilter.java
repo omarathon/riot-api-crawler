@@ -1,5 +1,8 @@
 /*
     A SummonerFilter that only accepts summoners of a certain rank (rank, tier pair) on a given queueType
+
+    Author: Omar Tanner (omarathon)
+    Copyright © 2019 omarathon
 */
 
 

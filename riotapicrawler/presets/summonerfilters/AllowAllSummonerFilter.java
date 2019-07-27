@@ -1,5 +1,8 @@
 /*
     A SummonerFilter that simply allows all summoners.
+
+    Author: Omar Tanner (omarathon)
+    Copyright © 2019 omarathon
 */
 
 package com.omarathon.riotapicrawler.presets.summonerfilters;

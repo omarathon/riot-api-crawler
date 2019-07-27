@@ -1,5 +1,8 @@
 /*
     A SummonerFilter that rejects all summoners with level less than 30.
+
+    Author: Omar Tanner (omarathon)
+    Copyright © 2019 omarathon
 */
 
 package com.omarathon.riotapicrawler.presets.summonerfilters;

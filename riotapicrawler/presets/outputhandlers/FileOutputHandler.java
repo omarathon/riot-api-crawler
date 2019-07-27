@@ -14,6 +14,8 @@
     - built JSON files in directory/fileoutputhandler-results,
     - logs in directory/fileoutputhandler-logs/output-handler-log.log
 
+    Author: Omar Tanner (omarathon)
+    Copyright © 2019 omarathon
 */
 
 package com.omarathon.riotapicrawler.presets.outputhandlers;

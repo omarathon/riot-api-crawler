@@ -1,5 +1,8 @@
 /*
     A MatchFilter that rejects Matches shorter than 20 minutes.
+
+    Author: Omar Tanner (omarathon)
+    Copyright © 2019 omarathon
 */
 
 package com.omarathon.riotapicrawler.presets.matchfilters;

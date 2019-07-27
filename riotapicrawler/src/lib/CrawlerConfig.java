@@ -7,6 +7,9 @@
    send to the output handler for each crawled player.
    ("max" because a low level player may not have as many matches as the property, so it will just
    obtain all of them).
+
+   Author: Omar Tanner (omarathon)
+   Copyright © 2019 omarathon
 */
 
 package com.omarathon.riotapicrawler.src.lib;

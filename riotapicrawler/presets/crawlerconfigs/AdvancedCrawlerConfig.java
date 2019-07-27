@@ -5,6 +5,9 @@
     - uses the LevelSummonerFilter, such that only Summoners with level 30 and beyond are crawled,
 
     and takes as input the number of recent matches per player to be obtained and stored by the crawler.
+
+    Author: Omar Tanner (omarathon)
+    Copyright © 2019 omarathon
 */
 
 package com.omarathon.riotapicrawler.presets.crawlerconfigs;
