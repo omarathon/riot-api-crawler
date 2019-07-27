@@ -174,8 +174,9 @@ Here I list some interesting future developments to the project:
 
   - Multithreaded Crawler instances.
 
-## Changelog
+## Changelog (dd/mm/yyyy)
 
+  - **27/07/2019**: Added Elo MatchFilter and SummonerFilter, filter parameter adjustments. (**v1.2**)
   - **16/07/2019**: Added a PrintOutputHandler. (**v1.1**)
   - **15/07/2019**: First version uploaded. (**v1.0**)
  
