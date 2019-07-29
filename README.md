@@ -172,7 +172,7 @@ It is recommended for one to install the first-half of the above dependencies an
 
 Here I list some interesting future developments to the project:
 
-  - Multithreaded Crawler instances.
+  - Caching API request results to reduce number of API calls.
 
 ## Changelog (dd/mm/yyyy)
 
