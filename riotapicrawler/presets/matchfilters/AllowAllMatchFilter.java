@@ -7,12 +7,11 @@
 
 package com.omarathon.riotapicrawler.presets.matchfilters;
 
-import com.omarathon.riotapicrawler.src.lib.MatchFilter;
-import net.rithms.riot.api.RiotApi;
-import net.rithms.riot.api.endpoints.match.dto.Match;
+import com.merakianalytics.orianna.types.core.match.Match;
+import com.omarathon.riotapicrawler.src.lib.filter.MatchFilter;
 
-public class AllowAllMatchFilter implements MatchFilter {
-    public boolean filter(Match m, RiotApi api) {
+public class AllowAllMatchFilter extends MatchFilter {
+    public boolean filter(Match m) {
         // Allow all matches, so the filter returns true for all input matches.
         return true;
     }

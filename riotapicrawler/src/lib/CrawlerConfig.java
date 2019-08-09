@@ -1,18 +1,7 @@
-/*
-   A configuration class for the crawler.
-
-   Stores a MatchFilter and SummonerFilter used by the crawler to
-   predicate the crawled Matches and Summoners,
-   and an integer maxMatches property which determines the number of recent matches to obtain and
-   send to the output handler for each crawled player.
-   ("max" because a low level player may not have as many matches as the property, so it will just
-   obtain all of them).
-
-   Author: Omar Tanner (omarathon)
-   Copyright © 2019 omarathon
-*/
-
 package com.omarathon.riotapicrawler.src.lib;
+
+import com.omarathon.riotapicrawler.src.lib.filter.MatchFilter;
+import com.omarathon.riotapicrawler.src.lib.filter.SummonerFilter;
 
 public class CrawlerConfig {
     // Number of recent matches to obtain and send to the output handler for each crawled player
@@ -22,16 +11,23 @@ public class CrawlerConfig {
     // Predicate for the Summoner objects to crawl
     private SummonerFilter summonerFilter;
 
+    private SummonerHistory summonerHistory;
+
     /* INPUTS: MatchFilter, SummonerFilter and maxMatches properties.
        THROWS: IllegalArgumentException if:
         - the input maxMatches is >100 in which case the api cannot obtain so many,
         - maxMatches is <1 in which case nonsensical input. */
-    public CrawlerConfig(MatchFilter mf, SummonerFilter sf, int maxMatches) throws IllegalArgumentException {
+    public CrawlerConfig(MatchFilter matchFilter, SummonerFilter summonerFilter, int maxMatches, SummonerHistory summonerHistory) throws IllegalArgumentException {
         // Set the maxMatches using setter method which may throw IllegalArgumentException
         setMaxMatches(maxMatches);
         // Set the class properties
-        this.matchFilter = mf;
-        this.summonerFilter = sf;
+        setMatchFilter(matchFilter);
+        setSummonerFilter(summonerFilter);
+        setSummonerHistory(summonerHistory);
+    }
+
+    public CrawlerConfig(MatchFilter matchFilter, SummonerFilter summonerFilter, int maxMatches) {
+        this(matchFilter, summonerFilter, maxMatches, new SummonerHistory());
     }
 
     /*
@@ -48,6 +44,10 @@ public class CrawlerConfig {
 
     public SummonerFilter getSummonerFilter() {
         return summonerFilter;
+    }
+
+    public SummonerHistory getSummonerHistory() {
+        return summonerHistory;
     }
 
     /* Setter for maxMatches THROWS IllegalArgumentException if:
@@ -67,5 +67,9 @@ public class CrawlerConfig {
 
     public void setSummonerFilter(SummonerFilter summonerFilter) {
         this.summonerFilter = summonerFilter;
+    }
+
+    public void setSummonerHistory(SummonerHistory summonerHistory) {
+        this.summonerHistory = summonerHistory;
     }
 }

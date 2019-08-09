@@ -7,13 +7,15 @@
 
 package com.omarathon.riotapicrawler.presets.matchfilters;
 
-import com.omarathon.riotapicrawler.src.lib.MatchFilter;
-import net.rithms.riot.api.RiotApi;
-import net.rithms.riot.api.endpoints.match.dto.Match;
+import com.merakianalytics.orianna.types.core.match.Match;
+import com.omarathon.riotapicrawler.src.lib.filter.MatchFilter;
+import org.joda.time.Duration;
 
-public class GameDurationMatchFilter implements MatchFilter {
-    public boolean filter(Match m, RiotApi api) {
-        // If the duration of the match is at least 60*20 seconds then return true, i.e allow, otherwise return false, i.e reject
-        return (m.getGameDuration() >= 60*20);
+public class GameDurationMatchFilter extends MatchFilter {
+    public boolean filter(Match m) {
+        // if duration of Match is longer than or equal to 20 mins, return true, otherwise return false.
+        Duration matchDuration = m.getDuration();
+        Duration mins = Duration.standardMinutes(20);
+        return (matchDuration.isLongerThan(mins) || matchDuration.isEqual(mins));
     }
 }

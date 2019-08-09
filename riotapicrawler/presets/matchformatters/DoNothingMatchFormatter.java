@@ -7,12 +7,13 @@
 
 package com.omarathon.riotapicrawler.presets.matchformatters;
 
-import com.omarathon.riotapicrawler.src.lib.MatchFormatter;
-import net.rithms.riot.api.endpoints.match.dto.Match;
+import com.merakianalytics.orianna.types.core.match.Match;
+import com.omarathon.riotapicrawler.src.lib.formatter.MatchFormatter;
 
-public class DoNothingMatchFormatter implements MatchFormatter {
-    public Object format(Match m) {
-        // Pass through the input match without modification.
+public class DoNothingMatchFormatter extends MatchFormatter<Match> {
+    public Match format(Match m) {
+        // pass through match without modification
         return m;
+
     }
 }

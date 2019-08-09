@@ -8,21 +8,21 @@
 
 package com.omarathon.riotapicrawler.presets.outputhandlers;
 
-import com.google.gson.Gson;
-import com.omarathon.riotapicrawler.src.lib.MatchFormatter;
-import com.omarathon.riotapicrawler.src.lib.OutputHandler;
-import net.rithms.riot.api.endpoints.match.dto.Match;
+import com.omarathon.riotapicrawler.presets.matchformatters.StringMatchFormatter;
+import com.omarathon.riotapicrawler.src.lib.handler.FormattingOutputHandler;
+import com.omarathon.riotapicrawler.src.lib.handler.Handler;
 
-public class PrintOutputHandler implements OutputHandler {
-    private MatchFormatter formatter;
-
-    // INPUT: A MatchFormatter which shall format the Match to then be printed
-    public PrintOutputHandler(MatchFormatter formatter) {
-        this.formatter = formatter;
+public class PrintOutputHandler extends FormattingOutputHandler<String> {
+    public PrintOutputHandler() {
+        this(new StringMatchFormatter());
     }
 
-    // The handle method shall format the input Match and print it to System.out. Deserialises the Object into a String via Google Gson.
-    public void handle(Match m) {
-        System.out.println(new Gson().toJson(formatter.format(m)));
+    public PrintOutputHandler(StringMatchFormatter formatter) {
+        super(formatter, new Handler<String>() {
+            @Override
+            public void handle(String input) {
+                System.out.println(input);
+            }
+        });
     }
 }

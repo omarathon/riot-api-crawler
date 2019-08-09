@@ -8,12 +8,12 @@
 
 package com.omarathon.riotapicrawler.presets.matchformatters;
 
-import com.omarathon.riotapicrawler.src.lib.MatchFormatter;
-import net.rithms.riot.api.endpoints.match.dto.Match;
+import com.merakianalytics.orianna.types.core.match.Match;
+import com.omarathon.riotapicrawler.presets.matchformatters.lib.Teams;
+import com.omarathon.riotapicrawler.src.lib.formatter.MatchFormatter;
 
-public class TeamStatsMatchFormatter implements MatchFormatter {
-    public Object format(Match m) {
-        // Obtain the list of team stats via the riot-api-java method (see documentation) and return the result
-        return m.getTeams();
+public class TeamStatsMatchFormatter extends MatchFormatter<Teams> {
+    public Teams format(Match m) {
+        return new Teams(m.getRedTeam(), m.getBlueTeam());
     }
 }
