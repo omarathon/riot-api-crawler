@@ -25,6 +25,11 @@ Below is a flowchart detailing the operation of the ``Crawler`` when it's called
 
 ## Quick Start
 
+**Before running the Crawler, one must set Orianna's Riot API key**. This can be done like so:
+```java
+Orianna.setRiotAPIKey("YOUR API KEY HERE");
+```
+
 Below is an example to begin crawling with a very basic configuration, where it:
  - Prints the output Matches to System.out (using the [PrintOutputHandler](riotapicrawler/presets/outputhandlers/PrintOutputHandler.java)) with no formatting (using a [DoNothingMatchFormatter](riotapicrawler/presets/matchformatters/DoNothingMatchFormatter.java)),
  - Accepts all Matches and Summoners as crawlable, and obtains 5 matches per Summoner (by initialising a [BasicCrawlerConfig](riotapicrawler/presets/crawlerconfigs/BasicCrawlerConfig.java) with 5 as the input maxMatches parameter)
