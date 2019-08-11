@@ -149,6 +149,22 @@ There are some additional dependencies required for the extras, specifically for
 
 ## Usage
 
+### Automatic
+
+One may add this tool to their Maven project by visiting the [Jitpack](https://jitpack.io/#omarathon/riotapicrawler/). One must add the Jitpack repository, and then the riotapicrawler depdendency from the Jitpack repo:
+```xml
+<repository>
+  <id>jitpack.io</id>
+  <url>https://jitpack.io</url>
+</repository>
+
+<dependency>
+  <groupId>com.github.omarathon</groupId>
+  <artifactId>riotapicrawler</artifactId>
+  <version>2.0</version>
+</dependency>
+```
+
 One may use this tool by adding [one of the jars](builds) to their project. It is their choice whether to choose the jar containing or not containing the dependencies, however if the latter option is chosen they must **install the appropriate dependencies as above**.
 
 **One may either clone this repository to obtain the JAR files, or download them from the Dropbox links below**:
