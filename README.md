@@ -1,23 +1,23 @@
 
 # # riot-api-crawler
 
-A highly customisable League of Legends match crawler, utilising [riot-api-java](https://github.com/taycaldwell/riot-api-java) as a Java wrapper for the [Riot API](https://developer.riotgames.com/).
+A highly customisable and extensible League of Legends match crawler, utilising [Orianna](https://github.com/meraki-analytics/orianna) as a Java framework for the Riot Games League of Legends API.
 
-Features built-in *request throttling* and *interactive logging*.
+This tool may be used for gathering large datasets of ``Matches`` in an intelligent and efficient manner.
 
-Current version: **1.2**.
+Current version: **2.0**.
 
 ## Functionality
-The crawler operates as follows:
- 1. Take a base summoner as an input, and set them as the Summoner being crawled.
- 2. Fetch x recent games from the crawled Summoner's match history, where x is determined by the CrawlerConfig.
- 3. Handle each obtained Match object via the OutputHandler, which shall do something desired with each Match.
- 4. Proceed to search for the next Summoner to crawl. Iterate through each Match, passing it through a filter in the CrawlerConfig to determine if it's crawlable, until a  crawlable Match is found.
- 5. Obtain all of the Summoners in the Match.
- 6. Randomly pick a new Summoner from the Match, passing each through a filter in the CrawlerConfig to determine if they're crawlable, until a crawlable Summoner is found.
- 7. If **(6)** ends with no crawlable Summoners found, return to **(4)**, moving to the next Match.
- 8. If **(6)** ends with no more Matches left at **(4)**, the crawler has reached a *dead end*, and its operation shall stop. This event is extremely unlikely unless the filters in the CrawlerConfig are extremely restrictive.
- 9. If a crawlable Summoner has been found, set them as the new Summoner being crawled, and return to **(2)**.
+
+The crawler begins at a ``Summoner``, obtains their ``MatchHistory``, sends their ``MatchHistory`` to its ``OutputHandler`` which will process each ``Match``, then seeks the next ``Summoner`` to crawl from the ``Participants`` in each ``Match`` of the ``MatchHistory``.
+
+Intelligent behaviour may be implemented through the use of ``Filters``, which make the decisions regarding the ``Matches`` and the ``Summoners`` to crawl, as well as the ``Matches`` that are handled by the ``OutputHandler``.
+
+The crawler traverses through ``Matches`` and ``Summoners`` in a depth-first fashion, where as soon as a crawlable ``Summoner`` is found, we move to them.
+
+Below is a flowchart detailing the operation of the ``Crawler`` when it's called on an input Summoner:
+
+![Crawler Flowchart](https://i.imgur.com/BvKHI9B.png)
 
 ## Notable Behaviour
 
