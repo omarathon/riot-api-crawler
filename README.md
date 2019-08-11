@@ -151,23 +151,12 @@ It is recommended for one to install the first-half of the above dependencies an
  
 (Current version: **2.0**)
 
-## Known Issues
-
- - If a Summoner's MatchList is not obtainable, i.e a 404 error, the crawler stops haphazardly (perhaps they were banned). Currently one may resolve this by implementing a SummonerFilter which tests whether their MatchList data is obtainable / tests whether they are banned.
-
-## Future Developments
-
-Here I list some interesting future developments to the project:
-
-  - Caching API request results to reduce number of API calls.
-
 ## Changelog (dd/mm/yyyy)
 
   - **27/07/2019**: Added Elo MatchFilter and SummonerFilter, filter parameter adjustments. (**v1.2**)
   - **16/07/2019**: Added a PrintOutputHandler. (**v1.1**)
   - **15/07/2019**: First version uploaded. (**v1.0**)
- 
-
-## Remark
-
-One is recommended only to use this code within prototype systems - *it may not be safe for production*.
+  
+  # Remark
+  
+  If you happen to use this tool in your project, citing this github page would be very much appreciated!
