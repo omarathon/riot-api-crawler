@@ -24,29 +24,28 @@ Below is a flowchart detailing the operation of the ``Crawler`` when it's called
 ## Quick Start
 
 Below is an example to begin crawling with a very basic configuration, where it:
- - Simply prints the output Matches to System.out (using the [PrintOutputHandler](riotapicrawler/presets/outputhandlers/PrintOutputHandler.java)) with no formatting (using a [DoNothingMatchFormatter](riotapicrawler/presets/matchformatters/DoNothingMatchFormatter.java)),
+ - Prints the output Matches to System.out (using the [PrintOutputHandler](riotapicrawler/presets/outputhandlers/PrintOutputHandler.java)) with no formatting (using a [DoNothingMatchFormatter](riotapicrawler/presets/matchformatters/DoNothingMatchFormatter.java)),
  - Accepts all Matches and Summoners as crawlable, and obtains 5 matches per Summoner (by initialising a [BasicCrawlerConfig](riotapicrawler/presets/crawlerconfigs/BasicCrawlerConfig.java) with 5 as the input maxMatches parameter)
  
  ```java
- // Construct the PrintOutputHandler with a DoNothingMatchFilter
- // (we will simply print the raw Match data)
- OutputHandler outputHandler  = new PrintOutputHandler(new DoNothingMatchFormatter());
- 
- // Construct a BasicCrawlerConfig, with 5 as the input maxMatches parameter
- // (number of recent Matches to obtain from each match history)
- CrawlerConfig crawlerConfig = new BasicCrawlerConfig(5);
- 
- // Construct a Path where we would like the logs from the Crawler to be written to.
- // In this example, I choose "C:/data/crawler"
- Path logsDirectory = Paths.get("C:/data/crawler");
- 
- // Construct a Crawler, with your input Riot API key and the above
- // OutputHandler, CrawlerConfig and log Path
- Crawler crawler = new Crawler("YOUR API KEY GOES HERE", outputHandler, crawlerConfig, logsDirectory);
- 
- // Run the Crawler on a new thread, starting from an input Summoner of choice
- // (with their Platform). Chosen here is https://euw.op.gg/summoner/userName=pff.
- crawler.run("pff", Platform.EUW);
+// Construct the PrintOutputHandler with a StringFormatter
+// that uses a DoNothingMatchFilter, so we format the Matches
+// into unmodified Strings and print them to System.out.
+OutputHandler outputHandler  = new PrintOutputHandler(new StringMatchFormatter(new DoNothingMatchFormatter()));
+
+// Construct a BasicCrawlerConfig, with 5 as the input maxMatches parameter
+// (number of recent Matches to obtain from each match history)
+CrawlerConfig crawlerConfig = new BasicCrawlerConfig(5);
+
+// Construct a Crawler, with the above CrawlerConfig and OutputHandler
+Crawler crawler = new Crawler(crawlerConfig, outputHandler);
+
+// Set Orianna's API key to your Riot API key
+Orianna.setRiotAPIKey("YOUR RIOT API KEY GOES HERE");
+
+// Run the Crawler on a new thread, starting from an input Summoner of choice
+// (with their Platform). Chosen here is https://euw.op.gg/summoner/userName=pff.
+crawler.run("pff", Platform.EUROPE_WEST);
  ```
  
  
