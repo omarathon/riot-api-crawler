@@ -52,45 +52,29 @@ crawler.run("pff", Platform.EUROPE_WEST);
 
  ## Main Classes
 These files may be located within *riotapicrawler/src*, and include:
- - [**Crawler.java**](riotapicrawler/src/Crawler.java) - The central object to be initialised, initiates crawling on a new thread after calling its run method with an input Summoner. One must construct a Crawler with:
-    - your Riot API key,
-    - an OutputHandler, which does something desired with the obtained Match objects,
-    - a CrawlerConfig, which filters the crawled upon Matches and Summoners, and provides additional parameters to configure the operation of the crawler,
-    -  a [Path](https://docs.oracle.com/javase/7/docs/api/java/nio/file/Path.html), where the logs from the crawler shall be generated.
+ - [**Crawler.java**](riotapicrawler/src/Crawler.java) - The central object to be constructed, initiates crawling on a new thread after calling its run method with an input Summoner.
+ 
 
 
 
-## Interfaces and Customisability Classes
-These files may be located within *riotapicrawler/src/lib*, and include:
-  - [**OutputHandler.java**](riotapicrawler/src/lib/OutputHandler.java) - An interface which takes a Match object and does something with it, for example formatting and saving it to a JSON file, or uploading it to a database.
-  -  [**MatchFilter.java**](riotapicrawler/src/lib/MatchFilter.java) and [**SummonerFilter.java**](riotapicrawler/src/lib/SummonerFilter.java) - Interfaces which predicate Match and Summoner objects, with their filter method returning true if the Object is "accepted" by the filter, and false otherwise.
-  - [**MatchFormatter.java**](riotapicrawler/src/lib/MatchFormatter.java) - An interface which transforms an input Match into an output Object.
+## Customisablity and Extensibility
 
-The above interfaces, although seemingly abstract, provide a high level of customisability. They are combined in the following class:
-  - [**CrawlerConfig.java**](riotapicrawler/src/lib/CrawlerConfig.java) - A *configuration class for the crawler*.  Stores a **MatchFilter** and **SummonerFilter** used by the crawler to  *predicate the crawled Matches and Summoners*,  and an **integer maxMatches property** which determines the *number of recent matches to obtain and send to the output handler for each crawled player*.
+Customisability and extensibility are offered in most classes, notably:
+- Filters,
+- OutputHandlers,
+- Listeners.
+
+Please visit the Wiki for further information regarding constructing and implementing your own classes.
 
 Included in the presets folder of this repo, one may find presets for all of these interfaces and classes. They are also contained within the builds.
 
-The **provided presets** are mostly basic and show a *simple* and *more complex* example, however there is included **two OutputHandlers**:
-  - [**FileOutputHandler.java**](riotapicrawler/presets/outputhandlers/FileOutputHandler.java) - An OutputHandler that writes a JSON file with name of the game ID for each Match object at a specified directory, with contents the output of the Match from its MatchFormatter. 
-  
-Utilises [Google Gson](https://github.com/google/gson).
+## Example
 
-  - [***PostFirebaseOutputHandler.java***](riotapicrawler/extras/postfirebaseoutputhandler/PostFirebaseOutputHandler.java) - An **extension output handler**, located within the *extras/postfirebaseoutputhandler* directory of this repo, which HTTP POSTs the formatted output from a MatchFormatter to a [Google Firebase](https://firebase.google.com/).
-  
-Utilises [Google Gson](https://github.com/google/gson) and [firebase4j](https://github.com/bane73/firebase4j).
-
-## Examples
-
-One may find examplar uses of the Crawler within the *examples* directory of this repo:
-
- - [**Example.java**](examples/Example.java) - an examplar use of the Crawler, which:
- 
+One may find an exampla uses of the Crawler within [**Example.java**](examples/Example.java), wherein the crawler operates such that it:
    - Only crawls Matches that are *at least 20 minutes long*,
    - Only crawls Summoners that are *at least level 30*,
    - Only processes *5 recent Matches* for each crawled Summoner,
-   - Formats each Match into a *set of statistics for both teams*,
-      and stores the results in *JSON files within a given directory*.
+   - Formats each Match into a *set of statistics for both teams*, and prints the results to System.out.
 
 ## Dependencies
 This project was developed via Maven, and used the following dependencies as libraries:
