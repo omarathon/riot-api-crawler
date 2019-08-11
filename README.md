@@ -92,6 +92,35 @@ One may find an examplar use of the Crawler within [**Example.java**](examples/E
    - Only crawls Summoners that are *at least level 30*,
    - Only processes *5 recent Matches* for each crawled Summoner,
    - Formats each Match into a *set of statistics for both teams*, and prints the results to System.out.
+  
+## Usage
+
+### Automatic
+
+One may add this tool to their Maven project by visiting the [Jitpack](https://jitpack.io/#omarathon/riotapicrawler/). One must add the Jitpack repository, and then the riotapicrawler depdendency from the Jitpack repo:
+```xml
+<repository>
+  <id>jitpack.io</id>
+  <url>https://jitpack.io</url>
+</repository>
+
+<dependency>
+  <groupId>com.github.omarathon</groupId>
+  <artifactId>riotapicrawler</artifactId>
+  <version>2.0</version>
+</dependency>
+```
+
+### Manual
+
+One may use this tool by adding [one of the jars](builds) to their project. It is their choice whether to choose the jar containing or not containing the dependencies, however if the latter option is chosen they must **install the appropriate dependencies below**.
+
+**One may either clone this repository to obtain the JAR files, or download them from the Dropbox links below**:
+
+ - [with dependencies](https://www.dropbox.com/s/s4ll1tlsen1bysh/riotapicrawler-2.0-dep.jar?dl=0)
+ - [without dependencies](https://www.dropbox.com/s/vsew4i75c1zui5y/riotapicrawler-2.0.jar?dl=0)
+ 
+(Current version: **2.0**)
 
 ## Dependencies
 This project was developed via Maven, and used the following dependencies as libraries:
@@ -146,33 +175,6 @@ There are some additional dependencies required for the extras, specifically for
   <version>-SNAPSHOT</version>
 </dependency>
 ```
-
-## Usage
-
-### Automatic
-
-One may add this tool to their Maven project by visiting the [Jitpack](https://jitpack.io/#omarathon/riotapicrawler/). One must add the Jitpack repository, and then the riotapicrawler depdendency from the Jitpack repo:
-```xml
-<repository>
-  <id>jitpack.io</id>
-  <url>https://jitpack.io</url>
-</repository>
-
-<dependency>
-  <groupId>com.github.omarathon</groupId>
-  <artifactId>riotapicrawler</artifactId>
-  <version>2.0</version>
-</dependency>
-```
-
-One may use this tool by adding [one of the jars](builds) to their project. It is their choice whether to choose the jar containing or not containing the dependencies, however if the latter option is chosen they must **install the appropriate dependencies as above**.
-
-**One may either clone this repository to obtain the JAR files, or download them from the Dropbox links below**:
-
- - [with dependencies](https://www.dropbox.com/s/s4ll1tlsen1bysh/riotapicrawler-2.0-dep.jar?dl=0)
- - [without dependencies](https://www.dropbox.com/s/vsew4i75c1zui5y/riotapicrawler-2.0.jar?dl=0)
- 
-(Current version: **2.0**)
 
 ## Changelog (dd/mm/yyyy)
 
