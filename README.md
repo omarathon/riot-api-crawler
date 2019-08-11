@@ -1,6 +1,6 @@
 [![Latest release](https://img.shields.io/github/release/omarathon/riot-api-crawler.svg)](https://github.com/omarathon/riot-api-crawler/releases/latest)
 
-### Riot API Crawler
+## Riot API Crawler
 
 ---
 
