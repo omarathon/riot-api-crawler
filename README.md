@@ -70,8 +70,8 @@ These files may be located within *riotapicrawler/src*, and include:
 
 Customisability and extensibility are offered in most classes, notably:
 - [Filters](../../wiki/Filters)
-- [[OutputHandlers|OutputHandlers]]
-- [[Listeners|Listeners]]
+- [OutputHandlers](../../wiki/OutputHandlers)
+- [Listeners](../../wiki/Listeners)
 
 Please visit the Wiki for further information regarding constructing and implementing your own classes.
 
