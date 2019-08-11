@@ -13,20 +13,13 @@ The crawler begins at a ``Summoner``, obtains their ``MatchHistory``, sends thei
 
 Intelligent behaviour may be implemented through the use of ``Filters``, which make the decisions regarding the ``Matches`` and the ``Summoners`` to crawl, as well as the ``Matches`` that are handled by the ``OutputHandler``.
 
-The crawler traverses through ``Matches`` and ``Summoners`` in a depth-first fashion, where as soon as a crawlable ``Summoner`` is found, we move to them.
+If no crawlable next ``Summoner`` is found from a current ``Summoner``, the crawler shall backtrack, moving to a previously visited Summoner, and resume the search from them.
+
+With the backtracking behaviour, the crawler traverses through ``Matches`` and ``Summoners`` in a depth-first fashion, where as soon as a crawlable ``Summoner`` is found, we move to them. However, when backtracking, we pick random previous points (``Summoners``).
 
 Below is a flowchart detailing the operation of the ``Crawler`` when it's called on an input Summoner:
 
 ![Crawler Flowchart](https://i.imgur.com/BvKHI9B.png)
-
-## Notable Behaviour
-
-In its current implementation, the crawler has the following behaviour for error-handling:
-
-  - After a call to the Riot API, if a **RateLimitException** is obtained, then there is a built-in **throttling system** which shall **sleep the thread** until further calls to the API can be made again. When possible, the request shall be **repeated**.
-- When obtaining the MatchList for the Summoner being crawled, all errors except a RateLimitException cause the crawler to stop crawling.
-- When obtaining the Match object for each MatchReference in the list of MatchReferences, any RiotApiException shall mean such Match is not sent to the OutputHandler, nor is it stored to be potentially crawled.
-- When obtaining the Summoner object for each Player in a Match, any RiotApiException shall mean that such Summoner will not be crawled, and is skipped.
 
 ## Quick Start
 
