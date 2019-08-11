@@ -54,15 +54,24 @@ crawler.run("pff", Platform.EUROPE_WEST);
 These files may be located within *riotapicrawler/src*, and include:
  - [**Crawler.java**](riotapicrawler/src/Crawler.java) - The central object to be constructed, initiates crawling on a new thread after calling its run method with an input Summoner.
  
+ - [**OutputHandler**](riotapicrawler/src/lib/handler/OutputHandler.java) - Recieves and processes the output from the Crawler.
+ 
+- [**CrawlerConfig**](riotapicrawler/src/lib/CrawlerConfig.java) - Manages the tools used by the Crawler that determine its movement through Matches and Summoners.
 
+- [**SummonerHistory**](riotapicrawler/src/lib/SummonerHistory.java) - Manages the previously visited Summoners.
 
+- [**CrawlerListener**](riotapicrawler/src/lib/CrawlerListener.java) - Implementing this class allows handling of the events generated from the Crawler.
+
+- [**MatchFilter**](riotapicrawler/src/lib/filter/MatchFilter.java) - Controls the movement of the crawler through Matches, and restricts the data sent an OutputHandler.
+
+- [**SummonerFilter**](riotapicrawler/src/lib/filter/SummonerFilter.java) - Controls the movement of the crawler through Summoners.
 
 ## Customisablity and Extensibility
 
 Customisability and extensibility are offered in most classes, notably:
-- Filters,
-- OutputHandlers,
-- Listeners.
+- [[Filters|Filters]],
+- [[OutputHandlers|OutputHandlers]]
+- [[Listeners|Listeners]]
 
 Please visit the Wiki for further information regarding constructing and implementing your own classes.
 
