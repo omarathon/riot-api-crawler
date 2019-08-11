@@ -111,7 +111,7 @@ One may add this tool to their Maven project by visiting the [Jitpack](https://j
 </dependency>
 ```
 
-Please ensure you're using the latest **release**, which at present is **2.0.1**.
+Please ensure you're using the **latest release**. The tag of this release may be found via the Jitpack badge at the top of this README.
 
 ## Dependencies
 This project was developed via Maven, and used the following dependencies as libraries:
