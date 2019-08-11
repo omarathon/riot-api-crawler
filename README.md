@@ -94,23 +94,25 @@ One may find an examplar use of the Crawler within [**Example.java**](examples/E
 
 ## Dependencies
 This project was developed via Maven, and used the following dependencies as libraries:
- - [**riot-api-java**](https://github.com/taycaldwell/riot-api-java) - com.github.taycaldwell, riot-api-java
+ - [**Orianna**](https://github.com/meraki-analytics/orianna) - **Essential**.
 ```xml
-<repositories>  
-	 <repository> 
-		 <id>jitpack.io</id>  
-		 <url>https://jitpack.io</url>  
-	 </repository>
-</repositories>
-<dependencies>
-	 <dependency>  
-		 <groupId>com.github.taycaldwell</groupId>  
-		 <artifactId>riot-api-java</artifactId>  
-		 <version>4.2.0</version>  
-	</dependency>
-</dependencies>
+<dependency>
+  <groupId>com.merakianalytics.orianna</groupId>
+  <artifactId>orianna</artifactId>
+  <version>4.0.0-rc4</version>
+</dependency>
 ```
- - [**Google Gson**](https://github.com/google/gson) - com.google.code.gson, gson
+
+- [**Guava**](https://github.com/google/guava) - **Essential**.
+```xml
+<dependency>
+  <groupId>com.google.guava</groupId>
+  <artifactId>guava</artifactId>
+  <version>28.0-jre</version>
+</dependency>
+```
+
+ - [**Google Gson**](https://github.com/google/gson) - Utilised within [StringMatchFormatter](riotapicrawler/presets/matchformatters/StringMatchFormatter.java). If you use this class, or any object uses this class, you must install this dependency.
 ```xml
 <dependencies>
 	<dependency>  
@@ -122,25 +124,26 @@ This project was developed via Maven, and used the following dependencies as lib
 ```
 
 There are some additional dependencies required for the extras, specifically for the PostFirebaseOutputHandler:
- - [**Google Firebase**](https://firebase.google.com/) - com.google.firebase, firebase-admin
+ - [**Google Firebase**](https://firebase.google.com/) - Utilised within [PostFirebaseOutputHandler](riotapicrawler/presets/outputhandlers/PostFirebaseOutputHandler.java). If you use this class, or any object uses this class, you must install this dependency.
 ```xml
-<dependencies>  
-	 <dependency> 
-		 <groupId>com.google.firebase</groupId>  
-		 <artifactId>firebase-admin</artifactId>  
-		 <version>6.8.1</version>  
-	 </dependency>
-</dependencies>
+<dependency>
+  <groupId>com.google.firebase</groupId>
+  <artifactId>firebase-admin</artifactId>
+  <version>6.9.0</version>
+</dependency>
 ```
- - [**firebase4j**](https://github.com/bane73/firebase4j) - com.github.bane73, firebase4j
+ - [**firebase4j**](https://github.com/bane73/firebase4j) - Utilised within [PostFirebaseOutputHandler](riotapicrawler/presets/outputhandlers/PostFirebaseOutputHandler.java). If you use this class, or any object uses this class, you must install this dependency.
 ```xml
-<dependencies>  
-	<dependency>  
-		 <groupId>com.github.bane73</groupId>  
-		 <artifactId>firebase4j</artifactId>  
-		 <version>Tmaster-b6f90e9764-1</version>  
-	</dependency>
-</dependencies>
+<repository>
+  <id>jitpack.io</id>
+  <url>https://jitpack.io</url>
+</repository>
+
+<dependency>
+  <groupId>com.github.bane73</groupId>
+  <artifactId>firebase4j</artifactId>
+  <version>-SNAPSHOT</version>
+</dependency>
 ```
 
 ## Usage
