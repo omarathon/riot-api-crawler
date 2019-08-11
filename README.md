@@ -1,6 +1,6 @@
 [![Latest release](https://img.shields.io/github/release/omarathon/riot-api-crawler.svg)](https://github.com/omarathon/riot-api-crawler/releases/latest)
 
-# Riot API Crawler ---
+# Riot API Crawler
 
 A highly customisable and extensible League of Legends match crawler, utilising [Orianna](https://github.com/meraki-analytics/orianna) as a Java framework for the Riot Games League of Legends API, and [Guava](https://github.com/google/guava) as a caching provider.
 
