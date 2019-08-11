@@ -6,8 +6,6 @@ A highly customisable and extensible League of Legends match crawler, utilising 
 
 This tool may be used for gathering large datasets of ``Matches`` in an intelligent and efficient manner.
 
-Current version: **2.0**.
-
 Please read the [**Wiki**](../../wiki/Home) if you require further information.
 
 ## Functionality
