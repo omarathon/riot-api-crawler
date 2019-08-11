@@ -1,4 +1,4 @@
-[![Latest release](https://img.shields.io/github/release/omarathon/riot-api-crawler.svg)](https://github.com/omarathon/riot-api-crawler/releases/latest)
+[![Latest Release](https://img.shields.io/github/release/omarathon/riot-api-crawler.svg)](https://github.com/omarathon/riot-api-crawler/releases/latest) [![Jitpack Release](https://jitpack.io/v/omarathon/riotapicrawler.svg)](https://jitpack.io/#omarathon/riotapicrawler)
 
 # Riot API Crawler
 
