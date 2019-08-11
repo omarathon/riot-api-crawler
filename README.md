@@ -73,9 +73,9 @@ Customisability and extensibility are offered in most classes, notably:
 - [OutputHandlers](../../wiki/OutputHandlers)
 - [Listeners](../../wiki/Listeners)
 
-Please visit the Wiki for further information regarding constructing and implementing your own classes.
+Please visit the [**Wiki**](../../wiki/Home) for further information regarding constructing and implementing your own classes.
 
-Included in the presets folder of this repo, one may find presets for all of these interfaces and classes. They are also contained within the builds.
+Included in the [presets](riotapicrawler/presets) folder, one may find presets for customisable classes. They are also contained within the builds.
 
 ## Example
 
@@ -147,7 +147,7 @@ It is recommended for one to install the first-half of the above dependencies an
  - [with dependencies](https://www.dropbox.com/s/s4ll1tlsen1bysh/riotapicrawler-1.2-dep.jar?dl=0)
  - [without dependencies](https://www.dropbox.com/s/vsew4i75c1zui5y/riotapicrawler-1.2.jar?dl=0)
  
-(Current version: **1.2**)
+(Current version: **2.0**)
 
 ## Known Issues
 
