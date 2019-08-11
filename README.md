@@ -58,7 +58,7 @@ crawler.run("pff", Platform.EUROPE_WEST);
  
 
  ## Main Classes
-These files may be located within *riotapicrawler/src*, and include:
+ 
  - [**Crawler.java**](riotapicrawler/src/Crawler.java) - The central object to be constructed, initiates crawling on a new thread after calling its run method with an input Summoner.
  
  - [**OutputHandler**](riotapicrawler/src/lib/handler/OutputHandler.java) - Recieves and processes the output from the Crawler.
