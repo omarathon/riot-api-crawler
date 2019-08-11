@@ -182,6 +182,6 @@ There are some additional dependencies required for the extras, specifically for
   - **16/07/2019**: Added a PrintOutputHandler. (**v1.1**)
   - **15/07/2019**: First version uploaded. (**v1.0**)
   
-  # Remark
+## Remark
   
-  If you happen to use this tool in your project, citing this repository would be very much appreciated!
+If you happen to use this tool in your project, citing this repository would be very much appreciated!
