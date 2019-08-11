@@ -69,7 +69,7 @@ These files may be located within *riotapicrawler/src*, and include:
 ## Customisablity and Extensibility
 
 Customisability and extensibility are offered in most classes, notably:
-- [[Filters|Filters]],
+- [Filters](../../wiki/Filters)
 - [[OutputHandlers|OutputHandlers]]
 - [[Listeners|Listeners]]
 
