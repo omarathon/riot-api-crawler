@@ -107,20 +107,11 @@ One may add this tool to their Maven project by visiting the [Jitpack](https://j
 <dependency>
   <groupId>com.github.omarathon</groupId>
   <artifactId>riotapicrawler</artifactId>
-  <version>2.0</version>
+  <version>v2.0.1</version>
 </dependency>
 ```
 
-### Manual
-
-One may use this tool by adding [one of the jars](builds) to their project. It is their choice whether to choose the jar containing or not containing the dependencies, however if the latter option is chosen they must **install the appropriate dependencies below**.
-
-**One may either clone this repository to obtain the JAR files, or download them from the Dropbox links below**:
-
- - [with dependencies](https://www.dropbox.com/s/s4ll1tlsen1bysh/riotapicrawler-2.0-dep.jar?dl=0)
- - [without dependencies](https://www.dropbox.com/s/vsew4i75c1zui5y/riotapicrawler-2.0.jar?dl=0)
- 
-(Current version: **2.0**)
+Please ensure you're using the latest **release**, which at present is **2.0.1**.
 
 ## Dependencies
 This project was developed via Maven, and used the following dependencies as libraries:
