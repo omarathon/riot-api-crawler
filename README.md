@@ -140,14 +140,12 @@ There are some additional dependencies required for the extras, specifically for
 
 ## Usage
 
-One may *use this crawler* by **adding [one of the jars](builds)** within the *builds* directory of this repo to their project. It is their choice whether to choose the jar *containing or not containing the dependencies*, however if the latter option is chosen they must **install the appropriate dependencies as above**.
-
-It is recommended for one to install the first-half of the above dependencies and to use the jar that does not contain the dependencies in their project, if they do not intend to use the PostFirebaseOutputHandler.
+One may use this tool by adding [one of the jars](builds) to their project. It is their choice whether to choose the jar containing or not containing the dependencies, however if the latter option is chosen they must **install the appropriate dependencies as above**.
 
 **One may either clone this repository to obtain the JAR files, or download them from the Dropbox links below**:
 
- - [with dependencies](https://www.dropbox.com/s/s4ll1tlsen1bysh/riotapicrawler-1.2-dep.jar?dl=0)
- - [without dependencies](https://www.dropbox.com/s/vsew4i75c1zui5y/riotapicrawler-1.2.jar?dl=0)
+ - [with dependencies](https://www.dropbox.com/s/s4ll1tlsen1bysh/riotapicrawler-2.0-dep.jar?dl=0)
+ - [without dependencies](https://www.dropbox.com/s/vsew4i75c1zui5y/riotapicrawler-2.0.jar?dl=0)
  
 (Current version: **2.0**)
 
