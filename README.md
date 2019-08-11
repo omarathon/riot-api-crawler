@@ -1,7 +1,7 @@
 
 # # riot-api-crawler
 
-A highly customisable and extensible League of Legends match crawler, utilising [Orianna](https://github.com/meraki-analytics/orianna) as a Java framework for the Riot Games League of Legends API, and [Guava](https://github.com/google/guava) as a caching mechanism.
+A highly customisable and extensible League of Legends match crawler, utilising [Orianna](https://github.com/meraki-analytics/orianna) as a Java framework for the Riot Games League of Legends API, and [Guava](https://github.com/google/guava) as a caching provider.
 
 This tool may be used for gathering large datasets of ``Matches`` in an intelligent and efficient manner.
 
