@@ -7,6 +7,8 @@ This tool may be used for gathering large datasets of ``Matches`` in an intellig
 
 Current version: **2.0**.
 
+Please visit the [**Wiki**](../../wiki/Home) if you require further information.
+
 ## Functionality
 
 The crawler begins at a ``Summoner``, obtains their ``MatchHistory``, sends their ``MatchHistory`` to its ``OutputHandler`` which will process each ``Match``, then seeks the next ``Summoner`` to crawl from the ``Participants`` in each ``Match`` of the ``MatchHistory``.
