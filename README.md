@@ -167,6 +167,7 @@ There are some additional dependencies required for the extras, specifically for
 
 ## Changelog (dd/mm/yyyy)
 
+  - **11/08/2019**: v2.0, complete rewrite. **new functionality**: caching, backtracking.
   - **27/07/2019**: Added Elo MatchFilter and SummonerFilter, filter parameter adjustments. (**v1.2**)
   - **16/07/2019**: Added a PrintOutputHandler. (**v1.1**)
   - **15/07/2019**: First version uploaded. (**v1.0**)
