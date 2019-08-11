@@ -1,17 +1,3 @@
-/*
-    An OutputHandler which shall POST the formatted output (from the MatchHandler) to a Google Firebase.
-    Utilises Google Gson and firebase4j.
-    (Refs: https://github.com/google/gson, https://github.com/bane73/firebase4j)
-
-    Requires a FirebaseConnection object to be initialised, which may be found at https://github.com/omarathon/firebase-post-json in lib (which also utilises Auth.java).
-
-    Logs the operation in a given log directory, in a folder named "postfirebaseoutputhandler-logs", in a file named "output-handler-log.log".
-    So in file: logDirectory/postfirebaseoutputhandler-logs/output-handler-log.log
-
-    Author: Omar Tanner (omarathon)
-    Copyright © 2019 omarathon
-*/
-
 package com.omarathon.riotapicrawler.presets.outputhandlers;
 
 import com.omarathon.riotapicrawler.presets.outputhandlers.lib.FirebaseConnection;

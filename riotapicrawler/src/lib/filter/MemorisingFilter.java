@@ -24,7 +24,7 @@ public abstract class MemorisingFilter<F> implements Filter<F> {
     public MemorisingFilter() {
         this(CacheBuilder.newBuilder()
                         .expireAfterWrite(3, TimeUnit.HOURS)
-                        .maximumSize(10000));
+                        .maximumSize(100000));
     }
 
     public boolean apply(F filterItem) {

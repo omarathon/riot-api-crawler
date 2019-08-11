@@ -1,7 +1,6 @@
 package com.omarathon.riotapicrawler.src.lib.handler;
 
 import com.merakianalytics.orianna.types.core.match.Match;
-import com.merakianalytics.orianna.types.core.match.MatchHistory;
 import com.omarathon.riotapicrawler.presets.matchfilters.AllowAllMatchFilter;
 import com.omarathon.riotapicrawler.src.lib.filter.MatchFilter;
 
@@ -16,14 +15,9 @@ public abstract class FilteringOutputHandler extends OutputHandler {
         setMatchFilter(filter);
     }
 
-    public void applyMultiple(MatchHistory matchHistory) {
-        for (Match match : matchHistory) {
-            apply(match);
-        }
-    }
-
+    @Override
     public void apply(Match match) {
-        if (filter.apply(match)) handle(match);
+        if (filter.apply(match)) super.apply(match);
     }
 
     public void setMatchFilter(MatchFilter matchFilter) {

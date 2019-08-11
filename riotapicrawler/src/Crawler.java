@@ -84,7 +84,7 @@ public class Crawler {
                     listener.onObtainedMatchHistory(summoner, matchHistory);
                     crawlerConfig.getSummonerHistory().addVisitedSummoner(summoner, matchHistory);
                     listener.onHandleMatchHistory(matchHistory);
-                    outputHandler.handleMultiple(matchHistory);
+                    outputHandler.applyMultiple(matchHistory);
                     break;
             }
 

@@ -1,3 +1,11 @@
+/*
+    In this example, we only crawl Matches that are 20 minutes or longer, and only crawl Summoners that are level 30+.
+    We print its results to System.out, but we format the Matches into a Teams object before printing them.
+    (The Teams object stores the Team object for the red and blue teams, where a Team object stores game statistics for the team).
+
+    We run the crawler for 30 seconds, by calling stop() after 30 seconds.
+ */
+
 package com.omarathon.riotapicrawler;
 
 import com.merakianalytics.orianna.Orianna;
@@ -16,8 +24,6 @@ import com.omarathon.riotapicrawler.src.lib.handler.OutputHandler;
 
 public class Example {
     public static void main(String[] args) {
-        // NOTE: To construct a Crawler, require an API key, OutputHandler and a CrawlerConfig.
-
         // Construct the MatchFormatter, which is a TeamStatsMatchFormatter
         MatchFormatter matchFormatter = new TeamStatsMatchFormatter();
 

@@ -4,7 +4,7 @@ import com.merakianalytics.orianna.types.core.match.Match;
 import com.omarathon.riotapicrawler.src.lib.formatter.MatchFormatter;
 
 // output handler
-public abstract class FormattingOutputHandler<F> extends OutputHandler {
+public class FormattingOutputHandler<F> extends OutputHandler {
     private MatchFormatter<F> matchFormatter;
     private Handler<F> handler;
 

@@ -26,7 +26,7 @@ public abstract class MemorisingEstimator<T, E> {
     public MemorisingEstimator() {
         this(CacheBuilder.newBuilder()
                 .expireAfterWrite(3, TimeUnit.HOURS)
-                .maximumSize(10000));
+                .maximumSize(100000));
     }
 
     public E getEstimate(T objectToEstimate) {
