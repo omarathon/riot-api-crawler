@@ -85,7 +85,7 @@ Included in the [presets](riotapicrawler/presets) folder, one may find presets f
 
 ## Example
 
-One may find an examplar use of the Crawler within [**Example.java**](examples/Example.java), wherein it:
+One may find an examplar use of the Crawler within [**Example.java**](riotapicrawler/Example.java), wherein it:
    - Only crawls Matches that are *at least 20 minutes long*,
    - Only crawls Summoners that are *at least level 30*,
    - Only processes *5 recent Matches* for each crawled Summoner,
