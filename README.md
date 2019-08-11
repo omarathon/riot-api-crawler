@@ -1,124 +1,137 @@
+[![Latest Release](https://img.shields.io/github/release/omarathon/riot-api-crawler.svg)](https://github.com/omarathon/riot-api-crawler/releases/latest) [![Jitpack Release](https://jitpack.io/v/omarathon/riotapicrawler.svg)](https://jitpack.io/#omarathon/riotapicrawler)
 
-# # riot-api-crawler
+# Riot API Crawler
 
-A highly customisable League of Legends match crawler, utilising [riot-api-java](https://github.com/taycaldwell/riot-api-java) as a Java wrapper for the [Riot API](https://developer.riotgames.com/).
+A highly customisable and extensible League of Legends match crawler, utilising [Orianna](https://github.com/meraki-analytics/orianna) as a Java framework for the Riot Games League of Legends API, and [Guava](https://github.com/google/guava) as a caching provider.
 
-Features built-in *request throttling* and *interactive logging*.
+This tool may be used for gathering large datasets of ``Matches`` in an intelligent and efficient manner.
 
-Current version: **1.2**.
+Please read the [**Wiki**](../../wiki/Home) if you require further information.
 
 ## Functionality
-The crawler operates as follows:
- 1. Take a base summoner as an input, and set them as the Summoner being crawled.
- 2. Fetch x recent games from the crawled Summoner's match history, where x is determined by the CrawlerConfig.
- 3. Handle each obtained Match object via the OutputHandler, which shall do something desired with each Match.
- 4. Proceed to search for the next Summoner to crawl. Iterate through each Match, passing it through a filter in the CrawlerConfig to determine if it's crawlable, until a  crawlable Match is found.
- 5. Obtain all of the Summoners in the Match.
- 6. Randomly pick a new Summoner from the Match, passing each through a filter in the CrawlerConfig to determine if they're crawlable, until a crawlable Summoner is found.
- 7. If **(6)** ends with no crawlable Summoners found, return to **(4)**, moving to the next Match.
- 8. If **(6)** ends with no more Matches left at **(4)**, the crawler has reached a *dead end*, and its operation shall stop. This event is extremely unlikely unless the filters in the CrawlerConfig are extremely restrictive.
- 9. If a crawlable Summoner has been found, set them as the new Summoner being crawled, and return to **(2)**.
 
-## Notable Behaviour
+The crawler begins at a ``Summoner``, obtains their ``MatchHistory``, sends their ``MatchHistory`` to its ``OutputHandler`` which will process each ``Match``, then seeks the next ``Summoner`` to crawl from the ``Participants`` in each ``Match`` of the ``MatchHistory``.
 
-In its current implementation, the crawler has the following behaviour for error-handling:
+Intelligent behaviour may be implemented through the use of ``Filters``, which make the decisions regarding the ``Matches`` and the ``Summoners`` to crawl, as well as the ``Matches`` that are handled by the ``OutputHandler``.
 
-  - After a call to the Riot API, if a **RateLimitException** is obtained, then there is a built-in **throttling system** which shall **sleep the thread** until further calls to the API can be made again. When possible, the request shall be **repeated**.
-- When obtaining the MatchList for the Summoner being crawled, all errors except a RateLimitException cause the crawler to stop crawling.
-- When obtaining the Match object for each MatchReference in the list of MatchReferences, any RiotApiException shall mean such Match is not sent to the OutputHandler, nor is it stored to be potentially crawled.
-- When obtaining the Summoner object for each Player in a Match, any RiotApiException shall mean that such Summoner will not be crawled, and is skipped.
+If no crawlable next ``Summoner`` is found from a current ``Summoner``, the crawler shall backtrack, moving to a previously visited Summoner, and resume the search from them.
+
+With the backtracking behaviour, the crawler traverses through ``Matches`` and ``Summoners`` in a depth-first fashion, where as soon as a crawlable ``Summoner`` is found, we move to them. However, when backtracking, we pick random previous points (``Summoners``).
+
+Below is a flowchart detailing the operation of the ``Crawler`` when it's called on an input Summoner:
+
+![Crawler Flowchart](https://i.imgur.com/BvKHI9B.png)
 
 ## Quick Start
 
+**Before running the Crawler, one must set Orianna's Riot API key**. This can be done like so:
+```java
+Orianna.setRiotAPIKey("YOUR API KEY HERE");
+```
+
 Below is an example to begin crawling with a very basic configuration, where it:
- - Simply prints the output Matches to System.out (using the [PrintOutputHandler](riotapicrawler/presets/outputhandlers/PrintOutputHandler.java)) with no formatting (using a [DoNothingMatchFormatter](riotapicrawler/presets/matchformatters/DoNothingMatchFormatter.java)),
+ - Prints the output Matches to System.out (using the [PrintOutputHandler](riotapicrawler/presets/outputhandlers/PrintOutputHandler.java)) with no formatting (using a [DoNothingMatchFormatter](riotapicrawler/presets/matchformatters/DoNothingMatchFormatter.java)),
  - Accepts all Matches and Summoners as crawlable, and obtains 5 matches per Summoner (by initialising a [BasicCrawlerConfig](riotapicrawler/presets/crawlerconfigs/BasicCrawlerConfig.java) with 5 as the input maxMatches parameter)
  
  ```java
- // Construct the PrintOutputHandler with a DoNothingMatchFilter
- // (we will simply print the raw Match data)
- OutputHandler outputHandler  = new PrintOutputHandler(new DoNothingMatchFormatter());
- 
- // Construct a BasicCrawlerConfig, with 5 as the input maxMatches parameter
- // (number of recent Matches to obtain from each match history)
- CrawlerConfig crawlerConfig = new BasicCrawlerConfig(5);
- 
- // Construct a Path where we would like the logs from the Crawler to be written to.
- // In this example, I choose "C:/data/crawler"
- Path logsDirectory = Paths.get("C:/data/crawler");
- 
- // Construct a Crawler, with your input Riot API key and the above
- // OutputHandler, CrawlerConfig and log Path
- Crawler crawler = new Crawler("YOUR API KEY GOES HERE", outputHandler, crawlerConfig, logsDirectory);
- 
- // Run the Crawler on a new thread, starting from an input Summoner of choice
- // (with their Platform). Chosen here is https://euw.op.gg/summoner/userName=pff.
- crawler.run("pff", Platform.EUW);
+// Construct the PrintOutputHandler with a StringFormatter
+// that uses a DoNothingMatchFilter, so we format the Matches
+// into unmodified Strings and print them to System.out.
+OutputHandler outputHandler  = new PrintOutputHandler(new StringMatchFormatter(new DoNothingMatchFormatter()));
+
+// Construct a BasicCrawlerConfig, with 5 as the input maxMatches parameter
+// (number of recent Matches to obtain from each match history)
+CrawlerConfig crawlerConfig = new BasicCrawlerConfig(5);
+
+// Construct a Crawler, with the above CrawlerConfig and OutputHandler
+Crawler crawler = new Crawler(crawlerConfig, outputHandler);
+
+// Set Orianna's API key to your Riot API key
+Orianna.setRiotAPIKey("YOUR RIOT API KEY GOES HERE");
+
+// Run the Crawler on a new thread, starting from an input Summoner of choice
+// (with their Platform). Chosen here is https://euw.op.gg/summoner/userName=pff.
+crawler.run("pff", Platform.EUROPE_WEST);
  ```
  
  
 
  ## Main Classes
-These files may be located within *riotapicrawler/src*, and include:
- - [**Crawler.java**](riotapicrawler/src/Crawler.java) - The central object to be initialised, initiates crawling on a new thread after calling its run method with an input Summoner. One must construct a Crawler with:
-    - your Riot API key,
-    - an OutputHandler, which does something desired with the obtained Match objects,
-    - a CrawlerConfig, which filters the crawled upon Matches and Summoners, and provides additional parameters to configure the operation of the crawler,
-    -  a [Path](https://docs.oracle.com/javase/7/docs/api/java/nio/file/Path.html), where the logs from the crawler shall be generated.
-
-
-
-## Interfaces and Customisability Classes
-These files may be located within *riotapicrawler/src/lib*, and include:
-  - [**OutputHandler.java**](riotapicrawler/src/lib/OutputHandler.java) - An interface which takes a Match object and does something with it, for example formatting and saving it to a JSON file, or uploading it to a database.
-  -  [**MatchFilter.java**](riotapicrawler/src/lib/MatchFilter.java) and [**SummonerFilter.java**](riotapicrawler/src/lib/SummonerFilter.java) - Interfaces which predicate Match and Summoner objects, with their filter method returning true if the Object is "accepted" by the filter, and false otherwise.
-  - [**MatchFormatter.java**](riotapicrawler/src/lib/MatchFormatter.java) - An interface which transforms an input Match into an output Object.
-
-The above interfaces, although seemingly abstract, provide a high level of customisability. They are combined in the following class:
-  - [**CrawlerConfig.java**](riotapicrawler/src/lib/CrawlerConfig.java) - A *configuration class for the crawler*.  Stores a **MatchFilter** and **SummonerFilter** used by the crawler to  *predicate the crawled Matches and Summoners*,  and an **integer maxMatches property** which determines the *number of recent matches to obtain and send to the output handler for each crawled player*.
-
-Included in the presets folder of this repo, one may find presets for all of these interfaces and classes. They are also contained within the builds.
-
-The **provided presets** are mostly basic and show a *simple* and *more complex* example, however there is included **two OutputHandlers**:
-  - [**FileOutputHandler.java**](riotapicrawler/presets/outputhandlers/FileOutputHandler.java) - An OutputHandler that writes a JSON file with name of the game ID for each Match object at a specified directory, with contents the output of the Match from its MatchFormatter. 
-  
-Utilises [Google Gson](https://github.com/google/gson).
-
-  - [***PostFirebaseOutputHandler.java***](riotapicrawler/extras/postfirebaseoutputhandler/PostFirebaseOutputHandler.java) - An **extension output handler**, located within the *extras/postfirebaseoutputhandler* directory of this repo, which HTTP POSTs the formatted output from a MatchFormatter to a [Google Firebase](https://firebase.google.com/).
-  
-Utilises [Google Gson](https://github.com/google/gson) and [firebase4j](https://github.com/bane73/firebase4j).
-
-## Examples
-
-One may find examplar uses of the Crawler within the *examples* directory of this repo:
-
- - [**Example.java**](examples/Example.java) - an examplar use of the Crawler, which:
  
+ - [**Crawler.java**](riotapicrawler/src/Crawler.java) - The central object to be constructed, initiates crawling on a new thread after calling its run method with an input Summoner.
+ 
+ - [**OutputHandler**](riotapicrawler/src/lib/handler/OutputHandler.java) - Recieves and processes the output from the Crawler.
+ 
+- [**CrawlerConfig**](riotapicrawler/src/lib/CrawlerConfig.java) - Manages the tools used by the Crawler that determine its movement through Matches and Summoners.
+
+- [**SummonerHistory**](riotapicrawler/src/lib/SummonerHistory.java) - Manages the previously visited Summoners.
+
+- [**CrawlerListener**](riotapicrawler/src/lib/CrawlerListener.java) - Implementing this class allows handling of the events generated from the Crawler.
+
+- [**MatchFilter**](riotapicrawler/src/lib/filter/MatchFilter.java) - Controls the movement of the crawler through Matches, and restricts the data sent an OutputHandler.
+
+- [**SummonerFilter**](riotapicrawler/src/lib/filter/SummonerFilter.java) - Controls the movement of the crawler through Summoners.
+
+## Customisablity and Extensibility
+
+Customisability and extensibility are offered in most classes, notably:
+- [Filters](../../wiki/Filters)
+- [OutputHandlers](../../wiki/OutputHandlers)
+- [Listeners](../../wiki/Listeners)
+
+Please visit the [**Wiki**](../../wiki/Home) for further information regarding constructing and implementing your own classes.
+
+Included in the [presets](riotapicrawler/presets) folder, one may find presets for customisable classes. They are also contained within the builds.
+
+## Example
+
+One may find an examplar use of the Crawler within [**Example.java**](riotapicrawler/Example.java), wherein it:
    - Only crawls Matches that are *at least 20 minutes long*,
    - Only crawls Summoners that are *at least level 30*,
    - Only processes *5 recent Matches* for each crawled Summoner,
-   - Formats each Match into a *set of statistics for both teams*,
-      and stores the results in *JSON files within a given directory*.
+   - Formats each Match into a *set of statistics for both teams*, and prints the results to System.out.
+  
+## Usage
+
+### Automatic
+
+One may add this tool to their Maven project by visiting the [Jitpack](https://jitpack.io/#omarathon/riotapicrawler/). One must add the Jitpack repository, and then the riotapicrawler depdendency from the Jitpack repo:
+```xml
+<repository>
+  <id>jitpack.io</id>
+  <url>https://jitpack.io</url>
+</repository>
+
+<dependency>
+  <groupId>com.github.omarathon</groupId>
+  <artifactId>riotapicrawler</artifactId>
+  <version>v2.0.1</version>
+</dependency>
+```
+
+Please ensure you're using the **latest release**. The tag of this release may be found via the Jitpack badge at the top of this README.
 
 ## Dependencies
 This project was developed via Maven, and used the following dependencies as libraries:
- - [**riot-api-java**](https://github.com/taycaldwell/riot-api-java) - com.github.taycaldwell, riot-api-java
+ - [**Orianna**](https://github.com/meraki-analytics/orianna) - **Essential**.
 ```xml
-<repositories>  
-	 <repository> 
-		 <id>jitpack.io</id>  
-		 <url>https://jitpack.io</url>  
-	 </repository>
-</repositories>
-<dependencies>
-	 <dependency>  
-		 <groupId>com.github.taycaldwell</groupId>  
-		 <artifactId>riot-api-java</artifactId>  
-		 <version>4.2.0</version>  
-	</dependency>
-</dependencies>
+<dependency>
+  <groupId>com.merakianalytics.orianna</groupId>
+  <artifactId>orianna</artifactId>
+  <version>4.0.0-rc4</version>
+</dependency>
 ```
- - [**Google Gson**](https://github.com/google/gson) - com.google.code.gson, gson
+
+- [**Guava**](https://github.com/google/guava) - **Essential**.
+```xml
+<dependency>
+  <groupId>com.google.guava</groupId>
+  <artifactId>guava</artifactId>
+  <version>28.0-jre</version>
+</dependency>
+```
+
+ - [**Google Gson**](https://github.com/google/gson) - Utilised within [StringMatchFormatter](riotapicrawler/presets/matchformatters/StringMatchFormatter.java). If you use this class, or any object uses this class, you must install this dependency.
 ```xml
 <dependencies>
 	<dependency>  
@@ -130,57 +143,34 @@ This project was developed via Maven, and used the following dependencies as lib
 ```
 
 There are some additional dependencies required for the extras, specifically for the PostFirebaseOutputHandler:
- - [**Google Firebase**](https://firebase.google.com/) - com.google.firebase, firebase-admin
+ - [**Google Firebase**](https://firebase.google.com/) - Utilised within [PostFirebaseOutputHandler](riotapicrawler/presets/outputhandlers/PostFirebaseOutputHandler.java). If you use this class, or any object uses this class, you must install this dependency.
 ```xml
-<dependencies>  
-	 <dependency> 
-		 <groupId>com.google.firebase</groupId>  
-		 <artifactId>firebase-admin</artifactId>  
-		 <version>6.8.1</version>  
-	 </dependency>
-</dependencies>
+<dependency>
+  <groupId>com.google.firebase</groupId>
+  <artifactId>firebase-admin</artifactId>
+  <version>6.9.0</version>
+</dependency>
 ```
- - [**firebase4j**](https://github.com/bane73/firebase4j) - com.github.bane73, firebase4j
+ - [**firebase4j**](https://github.com/bane73/firebase4j) - Utilised within [PostFirebaseOutputHandler](riotapicrawler/presets/outputhandlers/PostFirebaseOutputHandler.java). If you use this class, or any object uses this class, you must install this dependency.
 ```xml
-<dependencies>  
-	<dependency>  
-		 <groupId>com.github.bane73</groupId>  
-		 <artifactId>firebase4j</artifactId>  
-		 <version>Tmaster-b6f90e9764-1</version>  
-	</dependency>
-</dependencies>
+<repository>
+  <id>jitpack.io</id>
+  <url>https://jitpack.io</url>
+</repository>
+
+<dependency>
+  <groupId>com.github.bane73</groupId>
+  <artifactId>firebase4j</artifactId>
+  <version>-SNAPSHOT</version>
+</dependency>
 ```
-
-## Usage
-
-One may *use this crawler* by **adding [one of the jars](builds)** within the *builds* directory of this repo to their project. It is their choice whether to choose the jar *containing or not containing the dependencies*, however if the latter option is chosen they must **install the appropriate dependencies as above**.
-
-It is recommended for one to install the first-half of the above dependencies and to use the jar that does not contain the dependencies in their project, if they do not intend to use the PostFirebaseOutputHandler.
-
-**One may either clone this repository to obtain the JAR files, or download them from the Dropbox links below**:
-
- - [with dependencies](https://www.dropbox.com/s/s4ll1tlsen1bysh/riotapicrawler-1.2-dep.jar?dl=0)
- - [without dependencies](https://www.dropbox.com/s/vsew4i75c1zui5y/riotapicrawler-1.2.jar?dl=0)
- 
-(Current version: **1.2**)
-
-## Known Issues
-
- - If a Summoner's MatchList is not obtainable, i.e a 404 error, the crawler stops haphazardly (perhaps they were banned). Currently one may resolve this by implementing a SummonerFilter which tests whether their MatchList data is obtainable / tests whether they are banned.
-
-## Future Developments
-
-Here I list some interesting future developments to the project:
-
-  - Caching API request results to reduce number of API calls.
 
 ## Changelog (dd/mm/yyyy)
 
   - **27/07/2019**: Added Elo MatchFilter and SummonerFilter, filter parameter adjustments. (**v1.2**)
   - **16/07/2019**: Added a PrintOutputHandler. (**v1.1**)
   - **15/07/2019**: First version uploaded. (**v1.0**)
- 
-
+  
 ## Remark
-
-One is recommended only to use this code within prototype systems - *it may not be safe for production*.
+  
+If you happen to use this tool in your project, citing this repository would be very much appreciated!
