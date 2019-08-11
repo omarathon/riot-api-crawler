@@ -165,9 +165,11 @@ There are some additional dependencies required for the extras, specifically for
 </dependency>
 ```
 
-## Changelog (dd/mm/yyyy)
+## Changelog
 
-  - **11/08/2019**: v2.0, complete rewrite. **new functionality**: caching, backtracking.
+Below lists a changelog, in dd/mm/yyyy format:
+
+  - **11/08/2019**: Complete rewrite. **new functionality**: caching in filter results, visited summoners and estimators, and backtracking to previously visited summoners when reach dead ends. (**v2.0**)
   - **27/07/2019**: Added Elo MatchFilter and SummonerFilter, filter parameter adjustments. (**v1.2**)
   - **16/07/2019**: Added a PrintOutputHandler. (**v1.1**)
   - **15/07/2019**: First version uploaded. (**v1.0**)
