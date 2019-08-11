@@ -159,4 +159,4 @@ It is recommended for one to install the first-half of the above dependencies an
   
   # Remark
   
-  If you happen to use this tool in your project, citing this github page would be very much appreciated!
+  If you happen to use this tool in your project, citing this repository would be very much appreciated!
