@@ -6,7 +6,7 @@ A highly customisable and extensible League of Legends match crawler, utilising 
 
 This tool may be used for gathering large datasets of [Matches](https://github.com/meraki-analytics/orianna/blob/master/orianna/src/main/java/com/merakianalytics/orianna/types/core/match/Match.java) in an intelligent and efficient manner.
 
-Please read the [**Wiki**](../../wiki/Home) if you require further information.
+Please read the [**Wiki** :books:](../../wiki/Home) if you require further information.
 
 ## Functionality
 
