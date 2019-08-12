@@ -21,15 +21,15 @@ It uses many other types within Orianna, and one is recommended to view either t
 
 ### What it does
 
-The crawler begins at a ``Summoner``, obtains their ``MatchHistory``, sends their ``MatchHistory`` to its ``OutputHandler`` which will process each ``Match``, then seeks the next ``Summoner`` to crawl from the ``Participants`` in each ``Match`` of the ``MatchHistory``.
+The crawler begins at a [Summoner](https://github.com/meraki-analytics/orianna/blob/master/orianna/src/main/java/com/merakianalytics/orianna/types/core/summoner/Summoner.java), obtains their [MatchHistory](https://github.com/meraki-analytics/orianna/blob/master/orianna/src/main/java/com/merakianalytics/orianna/types/core/match/MatchHistory.java), sends their MatchHistory to its [OutputHandler](riotapcrawler/src/lib/handler/OutputHandler.java) which will process each [Match](https://github.com/meraki-analytics/orianna/blob/master/orianna/src/main/java/com/merakianalytics/orianna/types/core/match/Match.java), then seeks the next Summoner to crawl from the [Participants](https://github.com/meraki-analytics/orianna/blob/master/orianna/src/main/java/com/merakianalytics/orianna/types/core/match/Participant.java) in each Match of the MatchHistory.
 
-Intelligent behaviour may be implemented through the use of ``Filters``, which make the decisions regarding the ``Matches`` and the ``Summoners`` to crawl, as well as the ``Matches`` that are handled by the ``OutputHandler``.
+Intelligent behaviour may be implemented through the use of [Filters](riotapicrawler/src/lib/filter), which make the decisions regarding the Matches and the Summoners to crawl, as well as the Matches that are handled by the OutputHandler.
 
-If no crawlable next ``Summoner`` is found from a current ``Summoner``, the crawler shall backtrack, moving to a previously visited Summoner, and resume the search from them.
+If no crawlable next Summoner is found from a current Summoner, the crawler shall backtrack, moving to a previously visited Summoner, and resume the search from them.
 
-With the backtracking behaviour, the crawler traverses through ``Matches`` and ``Summoners`` in a depth-first fashion, where as soon as a crawlable ``Summoner`` is found, we move to them. However, when backtracking, we pick random previous points (``Summoners``).
+With the backtracking behaviour, the crawler traverses through Matches and Summoners in a depth-first fashion, where as soon as a crawlable Summoner is found, we move to them. However, when backtracking, we pick random previous points (Summoners).
 
-Below is a flowchart detailing the operation of the ``Crawler`` when it's called on an input Summoner:
+Below is a flowchart detailing the operation of the [Crawler](riotapicrawler/src/Crawler.java) when it's called on an input Summoner:
 
 ![Crawler Flowchart](https://i.imgur.com/BvKHI9B.png)
 
