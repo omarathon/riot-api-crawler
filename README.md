@@ -104,8 +104,6 @@ One may find an examplar use of the Crawler within [**Example.java**](riotapicra
   
 ## Usage
 
-### Automatic
-
 One may add this tool to their Maven project by visiting the [Jitpack](https://jitpack.io/#omarathon/riotapicrawler/). One must add the Jitpack repository, and then the riotapicrawler depdendency from the Jitpack repo:
 ```xml
 <repository>
