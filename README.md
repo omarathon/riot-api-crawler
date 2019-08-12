@@ -10,7 +10,7 @@ Please read the [**Wiki**](../../wiki/Home) if you require further information.
 
 ## Functionality
 
-### Orianna
+### Preamble
 
 This tool uses [Orianna](https://github.com/meraki-analytics/orianna) for Riot API calls. It uses the following [GhostObjects](https://github.com/meraki-analytics/orianna/blob/master/orianna/src/main/java/com/merakianalytics/orianna/types/core/GhostObject.java): 
 - [Summoner](https://github.com/meraki-analytics/orianna/blob/master/orianna/src/main/java/com/merakianalytics/orianna/types/core/summoner/Summoner.java), 
