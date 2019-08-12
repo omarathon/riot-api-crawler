@@ -12,7 +12,10 @@ Please read the [**Wiki**](../../wiki/Home) if you require further information.
 
 ### Orianna
 
-This tool uses [Orianna] for Riot API calls. It uses the following [GhostObjects](https://github.com/meraki-analytics/orianna/blob/master/orianna/src/main/java/com/merakianalytics/orianna/types/core/GhostObject.java): [Summoner](https://github.com/meraki-analytics/orianna/blob/master/orianna/src/main/java/com/merakianalytics/orianna/types/core/summoner/Summoner.java), [Match](https://github.com/meraki-analytics/orianna/blob/master/orianna/src/main/java/com/merakianalytics/orianna/types/core/match/Match.java), [MatchHistory](https://github.com/meraki-analytics/orianna/blob/master/orianna/src/main/java/com/merakianalytics/orianna/types/core/match/MatchHistory.java).
+This tool uses [Orianna](https://github.com/meraki-analytics/orianna) for Riot API calls. It uses the following [GhostObjects](https://github.com/meraki-analytics/orianna/blob/master/orianna/src/main/java/com/merakianalytics/orianna/types/core/GhostObject.java): 
+- [Summoner](https://github.com/meraki-analytics/orianna/blob/master/orianna/src/main/java/com/merakianalytics/orianna/types/core/summoner/Summoner.java), 
+- [Match](https://github.com/meraki-analytics/orianna/blob/master/orianna/src/main/java/com/merakianalytics/orianna/types/core/match/Match.java), 
+- [MatchHistory](https://github.com/meraki-analytics/orianna/blob/master/orianna/src/main/java/com/merakianalytics/orianna/types/core/match/MatchHistory.java).
 
 It uses many other types within Orianna, and one is recommended to view either the [Orianna documentation](https://github.com/meraki-analytics/orianna/tree/master/docs), or its [source code](https://github.com/meraki-analytics/orianna/tree/master/orianna/src/main/java/com/merakianalytics/orianna).
 
