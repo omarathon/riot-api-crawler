@@ -15,9 +15,6 @@ public class QueueMatchFilter extends MatchFilter {
     }
 
     public boolean filter(Match m) {
-        System.out.println(matchQueues);
-        System.out.println(m.getQueue());
-        System.out.println(matchQueues.contains(m.getQueue()));
         return (matchQueues.contains(m.getQueue()));
     }
 }
