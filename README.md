@@ -101,6 +101,12 @@ One may find an examplar use of the Crawler within [**Example.java**](riotapicra
    - Only crawls Summoners that are *at least level 30*,
    - Only processes *5 recent Matches* for each crawled Summoner,
    - Formats each Match into a *set of statistics for both teams*, and prints the results to System.out.
+   
+## Further Examples
+
+One may visit [this project](https://github.com/omarathon/crawler-visualisation) for a more advanced use of this tool.
+
+This may become a list if there are more projects that use this tool.
   
 ## Usage
 
