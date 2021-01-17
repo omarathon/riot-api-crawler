@@ -6,6 +6,7 @@ public abstract class GhostFilter<F extends GhostObject> extends MemorisingFilte
     @Override
     public boolean apply(F o) {
         if (!o.exists()) {
+            System.out.println("Doesn't exist");
             return false;
         }
         return super.apply(o);

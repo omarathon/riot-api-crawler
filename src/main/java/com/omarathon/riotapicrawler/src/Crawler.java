@@ -39,12 +39,9 @@ public class Crawler {
     }
 
     public void run(String summonerName, Platform platform) {
-        run(Orianna.summonerNamed(summonerName).withPlatform(platform).get());
-    }
-
-    // ability to run from an input Orianna Summoner object (v2.1)
-    public void run(Summoner summoner) {
         mode = Mode.CRAWLING;
+        // Obtain input base summoner
+        Summoner summoner = Orianna.summonerNamed(summonerName).withPlatform(platform).get();
         SummonerFilter summonerFilter = crawlerConfig.getSummonerFilter();
         if (summonerFilter.apply(summoner)) { // Crawlable
             listener.onInitialSummonerCrawlable(summoner);
@@ -159,25 +156,9 @@ public class Crawler {
         mode = Mode.IDLE;
     }
 
-    // accessors
-
     public Mode getMode() {
         return mode;
     }
-
-    public CrawlerConfig getCrawlerConfig() {
-        return crawlerConfig;
-    }
-
-    public CrawlerListener getListener() {
-        return listener;
-    }
-
-    public OutputHandler getOutputHandler() {
-        return outputHandler;
-    }
-
-    // mutators
 
     public void setCrawlerConfig(CrawlerConfig crawlerConfig) {
         listener.onCrawlerConfigUpdate(this.crawlerConfig, crawlerConfig);
