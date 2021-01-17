@@ -20,9 +20,8 @@ import java.util.List;
 import java.util.Set;
 
 public class EloHelper {
-    // Requires the RiotApi instance to make the api calls
     // Obtains a list of Ranks corresponding to different ranks on different league queues
-    // for a Summoner.
+    // for a Summoner. the rank is null if it was failed to be obtained.
     public static Set<Rank> getElos(Summoner s, Set<Queue> queueTypes) {
         // obtain league positions
         LeaguePositions leaguePositions = s.getLeaguePositions();
@@ -42,18 +41,42 @@ public class EloHelper {
         }
 
         Set<Rank> ranks = new HashSet<>();
-        // for each leagueposition, add to ranks the corresponding Rank
+        // for each LeagueEntry, add to ranks the corresponding Rank (is null if it can't be obtained)
         for (LeagueEntry leagueEntry : validEntries) {
-            ranks.add(new Rank(leagueEntry.getTier(), leagueEntry.getDivision()));
+            Tier tier = null;
+            Division division = null;
+            try { // attempt to obtain tier and division for leagueEntry. may throw some errors as Orianna may not have been updated for IRON tiers.
+                tier = leagueEntry.getTier();
+                division = leagueEntry.getDivision();
+            }
+            catch (Exception e) {
+                ranks.add(null);
+                continue;
+            }
+            ranks.add(new Rank(tier, division));
         }
 
         return ranks;
     }
 
+    // returns true if the input Ranks are valid, otherwise false. they're invalid if there's no ranks in the set, or if they'll all null.
+    private static boolean checkRanks(Set<Rank> ranks) {
+        if (ranks.isEmpty()) return false;
+        boolean foundNonNullRank = false;
+        for (Rank rank : ranks) {
+            if (rank != null) {
+                foundNonNullRank = true;
+                break;
+            }
+        }
+        if (!foundNonNullRank) return false;
+
+        return true;
+    }
     // Given a set of input ranks, will return the maximum rank out of the input Ranks
-    // Throws IllegalArgumentException if input set of ranks is empty
+    // Throws IllegalArgumentException if input set of ranks is empty or they're all null
     public static Rank getMaxRank(Set<Rank> ranks) throws IllegalArgumentException {
-        if (ranks.isEmpty()) throw new IllegalArgumentException("No ranks to obtain ranks from!");
+        if (!checkRanks(ranks)) throw new IllegalArgumentException("Input ranks is either empty or entirely null");
 
         // Firstly obtains the maximum tier out of the ranks
         Tier maxTier = getMaxTier(ranks);
@@ -65,9 +88,10 @@ public class EloHelper {
     }
 
     // Given a set of input Ranks, will return the maximum tier (e.g DIAMOND > PLATINUM) out of the input Ranks
-    // Throws IllegalArgumentException if input set of ranks is empty
+    // Throws IllegalArgumentException if input set of ranks is empty or they're all null
     public static Tier getMaxTier(Set<Rank> ranks) throws IllegalArgumentException {
-        if (ranks.isEmpty()) throw new IllegalArgumentException("No ranks to obtain tiers from!");
+        if (!checkRanks(ranks)) throw new IllegalArgumentException("Input ranks is either empty or entirely null");
+
         Tier maxTier = null;
         for (Rank summonerRank : ranks) {
             Tier summonerTier = summonerRank.getTier();
@@ -80,10 +104,10 @@ public class EloHelper {
 
     // Given a set of input Ranks, and a chosen focus tier,
     // will return the maximum division found for that tier within the set.
-    // Throws IllegalArgumentException if input set of ranks is empty.
+    // Throws IllegalArgumentException if input set of ranks is empty or they're all null
     // Returns null if there are no ranks in the given focus tier.
     public static Division getMaxDivision(Set<Rank> ranks, Tier focusTier) throws IllegalArgumentException {
-        if (ranks.isEmpty()) throw new IllegalArgumentException("No ranks to obtain divisions from!");
+        if (!checkRanks(ranks)) throw new IllegalArgumentException("Input ranks is either empty or entirely null");
 
         Division maxDivision = null;
 
