@@ -6,7 +6,7 @@ A highly customisable and extensible League of Legends match crawler, utilising 
 
 This tool may be used for gathering large datasets of [Matches](https://github.com/meraki-analytics/orianna/blob/master/orianna/src/main/java/com/merakianalytics/orianna/types/core/match/Match.java) in an intelligent and efficient manner.
 
-Please read the [**Wiki**](../../wiki/Home) if you require further information.
+:books: Please read the [**Wiki**](../../wiki/Home) if you require further information.
 
 ## Functionality
 
@@ -101,12 +101,6 @@ One may find an examplar use of the Crawler within [**Example.java**](riotapicra
    - Only crawls Summoners that are *at least level 30*,
    - Only processes *5 recent Matches* for each crawled Summoner,
    - Formats each Match into a *set of statistics for both teams*, and prints the results to System.out.
-   
-## Further Examples
-
-One may visit [this project](https://github.com/omarathon/crawler-visualisation) for a more advanced use of this tool.
-
-This may become a list if there are more projects that use this tool.
   
 ## Usage
 
@@ -179,6 +173,15 @@ There are some additional dependencies required for the extras, specifically for
   <version>-SNAPSHOT</version>
 </dependency>
 ```
+
+## Changelog
+
+Below lists a changelog, in dd/mm/yyyy format:
+
+  - **11/08/2019**: Complete rewrite. **new functionality**: caching in filter results, visited summoners and estimators, and backtracking to previously visited summoners when reach dead ends. (**v2.0**)
+  - **27/07/2019**: Added Elo MatchFilter and SummonerFilter, filter parameter adjustments. (**v1.2**)
+  - **16/07/2019**: Added a PrintOutputHandler. (**v1.1**)
+  - **15/07/2019**: First version uploaded. (**v1.0**)
   
 ## Remark
   
